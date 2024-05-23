@@ -1,0 +1,267 @@
+.page-content, .sm-page-content {
+  & > section {
+    margin-top: $spacing-xxxl;
+    margin-bottom: $spacing-xxxl;
+
+    & > div:not(:last-of-type) {
+      margin-bottom: $spacing-xxl;
+    }
+  }
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: $spacing-xl;
+  width: $hero-section-width;
+  position: relative;
+
+  & > h1 {
+    max-width: 600px;
+  }
+
+  & > div {
+    max-width: 660px;
+  }
+
+  .q-btn {
+    font-size: $cta-btn-font-size;
+  }
+}
+
+.header-bento {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  grid-template-rows: 205px 205px;
+  gap: 24px;
+
+  & > div:nth-of-type(1) {
+    grid-area: 1 / 1 / span 1 / span 1;
+  }
+
+  & > div:nth-of-type(2) {
+    grid-area: 2 / 1 / span 1 / span 1;
+  }
+
+  & > div:nth-of-type(3) {
+    grid-area: 1 / 2 / span 2 / span 1;
+  }
+
+  & > div {
+    border-radius: $radius-xl;
+    padding: 20px;
+    position: relative;
+
+    & > img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  & ~ div {
+    h2 {
+      margin-top: 0;
+    }
+  }
+}
+
+.illustration-container {
+  padding: $spacing-lg;
+
+  & img {
+    display: block;
+    width: 100%;
+    position: relative;
+  }
+
+  &#features-illustration {
+    padding-bottom: 0;
+  }
+}
+
+.main-cta {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+
+  & > * {
+    max-width: 800px;
+  }
+
+  .cta-button-container {
+    position: relative;
+
+    &::before, &::after {
+      content: '';
+      width: 590px;
+      height: 370px;
+      top: calc(50% - 4px);
+      background-position: bottom;
+      background-repeat: no-repeat;
+      position: absolute;
+    }
+
+    &::before {
+      background: url(../../assets/img/home/dot-lines.svg);
+      left: 0;
+      transform: translate(-100%, -50%);
+    }
+
+    &::after {
+      background: url(../../assets/img/home/dot-lines.svg);
+      right: 0;
+      transform: translate(100%, -50%) scaleX(-1);
+    }
+  }
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: $spacing-xxl;
+
+  h2 {
+    max-width: 380px;
+  }
+
+  .header-badge {
+    background-color: rgba($primary, .02);
+    border-radius: 16px;
+    padding: 8px 10px;
+  }
+}
+
+section > .row {
+  flex-wrap: wrap;
+
+  & > div {
+    min-width: 250px !important;
+  }
+
+  @media only screen and (max-width: 596px) {
+    &.sm-reverse {
+      flex-direction: column-reverse;
+    }
+  }
+}
+
+.advantages-bento {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+
+  .gradient-lite-card {
+    padding: 16px;
+
+    & > div {
+      z-index: 1;
+      position: relative;
+
+      &:first-of-type {
+        font-weight: bold;
+      }
+
+      &:not(:last-of-type) {
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  & > div img {
+    max-width: 100%;
+  }
+
+  & > div:nth-child(1) {
+    grid-area: 1 / 1 / span 1 / span 9;
+  }
+
+  & > div:nth-child(2) {
+    grid-area: 1 / 10 / span 1 / span 10;
+
+    img {
+      margin: auto;
+      margin-bottom: -16px;
+    }
+  }
+
+  & > div:nth-child(3) {
+    grid-area: 1 / 20 / span 2 / span 6;
+
+    img {
+      margin: auto;
+    }
+  }
+
+  & > div:nth-child(4) {
+    grid-area: 2 / 1 / span 1 / span 10;
+  }
+
+  & > div:nth-child(5) {
+    grid-area: 2 / 11 / span 1 / span 9;
+
+    img {
+      margin: auto;
+      max-height: 140px;
+    }
+  }
+}
+
+.analytics-btn {
+  transition: $transition-duration;
+
+  &:not(.active) {
+    background: white;
+    border: 1px solid rgba($border-color, .6);
+
+    .lite-card {
+      border: 1px solid rgba($border-color, .6);
+    }
+  }
+
+  &:not(.active):hover {
+    background: $lite-bg;
+  }
+
+  & .lite-card {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+  }
+}
+
+@media only screen and (max-width: 899px) {
+  /* For mobile phones */
+  .hero-section {
+    padding: $spacing-lg;
+  }
+
+  .header-bento {
+    display: flex;
+    flex-direction: column;
+
+    & > div {
+      flex-direction: column;
+
+      & > div.absolute {
+        position: relative;
+        margin-bottom: $space-base;
+      }
+    }
+  }
+
+  .advantages-bento {
+    display: flex;
+    flex-direction: column;
+
+    & > div:nth-child(4) img {
+      max-width: 110px;
+    }
+  }
+}

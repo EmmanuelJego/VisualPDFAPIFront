@@ -1,0 +1,43 @@
+projectName: 'C:\Users\jego9\Documents\Workspace\VisualPDFAPIfront\fontawesome'
+version: 6.4.0
+icons:
+  - badge-check:
+      - regular
+  - clock:
+      - regular
+  - chart-simple:
+      - regular
+  - bell-on:
+      - regular
+  - gear-code:
+      - regular
+  - wrench:
+      - regular
+  - coin:
+      - regular
+  - arrow-up-right-from-square:
+      - regular
+  - arrow-right:
+      - regular
+  - bars:
+      - regular
+  - arrow-right-from-bracket:
+      - regular
+  - gear:
+      - regular
+  - house:
+      - regular
+  - xmark:
+      - regular
+  - shield-keyhole:
+      - regular
+  - file-export:
+      - regular
+  - database:
+      - regular
+  - messages-question:
+      - regular
+  - chevron-down:
+      - solid
+  - circle-question:
+      - regular

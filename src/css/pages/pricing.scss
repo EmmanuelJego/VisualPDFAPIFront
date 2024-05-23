@@ -1,0 +1,47 @@
+.q-slider__text {
+  font-size: $body-font-size;
+}
+
+.q-slider__marker-labels {
+  text-wrap: nowrap;
+}
+
+.q-slider__markers {
+  height: 200%;
+  transform: translateY(-25%);
+}
+
+.pricing-period-toggle {
+  background: $grey-11;
+  padding: 5px;
+  border-radius: 4px;
+  gap: 5px;
+
+  .q-btn-item {
+    border-radius: 4px;
+
+    &[aria-pressed="true"] {
+      background: white !important;
+      color: $primary !important;
+      font-weight: bold;
+    }
+  }
+}
+
+.pricing-col {
+  min-width: min(100%, 300px) !important;
+}
+
+#yearly-gain-tag {
+  transform: translate(45%, -35%);
+  font-size: 14px;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  background-color: $primary;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}

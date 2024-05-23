@@ -1,0 +1,36 @@
+pre[class*=language-] {
+  border-radius: $radius-lg;
+  margin: 0 0 16px;
+}
+
+.code-toolbar > .toolbar {
+  top: .2em !important;
+  right: .4em !important;
+
+  button {
+    cursor: pointer;
+    background: $lite-bg !important;
+    color: $dark !important;
+
+    &:focus:not(:hover) {
+      color: $dark !important;
+    }
+
+    &:hover {
+      color: $primary !important;
+    }
+  }
+}
+
+.inline-code {
+  background-color: $grey-4;
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+.posts-nav {
+  display: flex;
+  margin-top: $spacing-xxl;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+}

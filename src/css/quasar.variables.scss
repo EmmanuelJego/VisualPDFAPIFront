@@ -1,0 +1,62 @@
+// Quasar SCSS (& Sass) Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass/SCSS variables found in Quasar's source Sass/SCSS files.
+
+// Check documentation for full list of Quasar variables
+
+// Your own variables (that are declared here) and Quasar's own
+// ones will be available out of the box in your .vue/.scss/.sass files
+
+// It's highly recommended to change the default colors
+// to match your app's branding.
+// Tip: Use the "Theme Builder" on Quasar's documentation website.
+
+$primary   : #9135E5;
+$secondary : #453D4C;
+$accent    : #522A77;
+
+$dark      : #212121;
+$dark-page : #121212;
+
+$positive  : #21BA45;
+$negative  : #C10015;
+$info      : #31CCEC;
+$warning   : #F2C037;
+
+$gradient-light: #572B80;
+$body-bg: #FCFCFC;
+$border-color: #C6B9D2;
+$grey-border-color: #E0E0E0;
+$lite-bg: #F9F9FF;
+
+$body-font-size: 16px !default;
+$cta-btn-font-size: 18px;
+
+$radius-xl: 20px; 
+$radius-lg: calc($radius-xl / 2);
+$radius-md: calc($radius-xl / 2.5);
+$button-border-radius: 6px !important;
+
+$spacing-md: 24px;
+$spacing-lg: 32px;
+$spacing-xl: 48px;
+$spacing-xxl: 128px;
+$spacing-xxxl: 192px;
+
+$hero-section-width: 1300px;
+$page-content-width: 1100px;
+$sm-page-content-width: 850px;
+
+$header-height: 50px;
+
+$h1: (size: 3rem,   line-height: 3.4rem, letter-spacing: normal, weight: bold) !default;
+$h2: (size: 2.2rem, line-height: 2.7rem, letter-spacing: normal, weight: bold) !default;
+$h3: (size: 1.7rem, line-height: 2.1rem, letter-spacing: normal, weight: bold) !default;
+$h4: (size: 1.3rem, line-height: 1.6rem, letter-spacing: normal, weight: bold) !default;
+
+$subtitle1: (size: 1.25rem, line-height: 1.6rem) !default;
+$subtitle2: (size: 1rem,    line-height: 1.3rem) !default;
+$body2:     (size: .875rem, line-height: 1.25rem, letter-spacing: .01em) !default;
+
+$transition-duration: .3s;

@@ -1,0 +1,19 @@
+.q-expansion-item {
+  border-radius: $radius-md;
+  overflow: hidden;
+  background-color: $grey-2;
+  border: 1px solid $grey-2;
+
+  .q-item__label {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .q-item {
+    padding: 16px;
+  }
+
+  .q-expansion-item__toggle-icon {
+    font-size: 16px;
+  }
+}
