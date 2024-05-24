@@ -15,7 +15,6 @@ import guidesCategories from 'src/posts/guides/index.js';
 
 import SideMenuPageMixin from './mixins/SideMenuPageMixin';
 import DocsPageMixin from './mixins/DocsPageMixin';
-import 'src/css/pages/post.scss';
 
 export default defineComponent({
   name: 'GuidesPage',

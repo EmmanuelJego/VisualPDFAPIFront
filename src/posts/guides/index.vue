@@ -8,7 +8,7 @@
     You will also find lots of code examples allowing you to see a concrete use of each functionality.
   </p>
   <p>
-    If you are looking for the API references, you'll find them in our <router-link
+    If you are looking for the API reference, you'll find them in our <router-link
       :to="{ name: 'docs' }">documentation</router-link>.
   </p>
 
@@ -60,10 +60,12 @@
     The guides we write can sometimes be incomplete or even incorrect, although we try to keep them as up to date as
     possible.
   </p>
-  <p>
-    If you encounter a difficulty, spot an error or an omission, do not hesitate to let us know by contacting
-    us.
-  </p>
+  <div>
+    <span class="q-mr-xs vertical-middle">If you encounter a difficulty, spot an error or an omission, do not hesitate
+      to let us know
+      by</span>
+    <q-btn unelevated flat no-caps color="primary" label="contacting us" class="link-btn" />.
+  </div>
 </template>
 
 <script lang="ts">

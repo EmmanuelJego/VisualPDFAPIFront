@@ -5,28 +5,30 @@
       :to="{ name: 'guides-watermark' }">adding a watermark</router-link> allow you to personalize the text content by
     choosing a font. Find in this guide the different fonts currently taken into account by the API.
   </p>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Font name</th>
-        <th scope="col">Value</th>
-        <th scope="col">Preview</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="font in fonts" :key="font.value">
-        <td>{{ font.name }}</td>
-        <td>{{ font.value }}</td>
-        <td><img :src="`img/fonts/${font.value}.svg`" :alt="font.name" width="200" height="50" class="vertical-middle">
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="overflow-auto">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Font name</th>
+          <th scope="col">Value</th>
+          <th scope="col">Preview</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="font in fonts" :key="font.value">
+          <td>{{ font.name }}</td>
+          <td>{{ font.value }}</td>
+          <td><img :src="`img/fonts/${font.value}.svg`" :alt="font.name" width="200" height="50"
+              class="vertical-middle">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <div class="q-mt-md">
-    <span class="q-mr-xs">Can't find a font that suits your need?</span>
-    <q-btn unelevated flat no-caps color="primary" label="Contact us"
-      class="text-body1 text-underline q-px-xs min-h-auto" />
+    <span>Can't find a font that suits your need?</span>
+    <q-btn unelevated flat no-caps color="primary" label="Contact us" class="link-btn" />
   </div>
 </template>
 

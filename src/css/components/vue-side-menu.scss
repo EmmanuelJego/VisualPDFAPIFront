@@ -14,7 +14,7 @@ $menu-top: $header-height + 1px;
   height: calc(100vh - $menu-top);
   overflow-y: auto;
 
-  & > div:not(:last-child) {
+  & > div:not(:last-of-type) {
     margin-bottom: $spacing-md;
   }
 
@@ -31,6 +31,10 @@ $menu-top: $header-height + 1px;
 }
 
 .side-menu-mobile-toggle {
+  display: none;
+}
+
+.side-menu-overlay {
   display: none;
 }
 
@@ -51,10 +55,6 @@ $menu-top: $header-height + 1px;
 
     &.mobile-hidden {
       margin-left: -$menu-width;
-
-      .side-menu-mobile-toggle {
-        // margin-left: 0;
-      }
     }
   }
 
@@ -67,5 +67,6 @@ $menu-top: $header-height + 1px;
     background: #1e1e1e38;
     z-index: 0;
     transition: .3s;
+    display: block;
   }
 }

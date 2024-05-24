@@ -9,7 +9,7 @@
 
       <router-link to="/features" class="desktop-only-item">Features</router-link>
       <router-link to="/guides" class="desktop-only-item">Guides</router-link>
-      <router-link to="/docs" class="desktop-only-item">Documentation</router-link>
+      <router-link to="/docs" class="desktop-only-item">API reference</router-link>
       <router-link to="/pricing" class="desktop-only-item">Pricing</router-link>
 
       <router-link class="q-ml-auto desktop-only-item" to="login">Login</router-link>

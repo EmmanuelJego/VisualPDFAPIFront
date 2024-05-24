@@ -1,5 +1,5 @@
 <template>
-  <div class="posts-nav">
+  <div v-if="previousPost || nextPost" class="posts-nav">
     <q-btn v-if="previousPost" unelevated no-caps class="lite-card rounded-borders-lg q-py-sm" :ripple="false"
       :to="{ name: previousPost.slug }">
       <div class="text-left flex column">

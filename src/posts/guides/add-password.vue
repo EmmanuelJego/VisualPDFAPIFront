@@ -21,7 +21,9 @@
         [
           {
             tool: 'add-password',
-            password: 'my_sup3r_s3cr3t_pwd',
+            options: {
+              password: 'my_sup3r_s3cr3t_pwd',
+            },
           },
         ],
       );

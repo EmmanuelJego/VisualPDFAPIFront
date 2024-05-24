@@ -3,6 +3,8 @@
     <vue-side-menu :categories="menuCategories" />
     <div class="page-content q-mx-auto q-px-lg">
       <router-view />
+
+      <vue-docs-bottom-nav :categories="menuCategories" />
     </div>
   </q-page>
 </template>

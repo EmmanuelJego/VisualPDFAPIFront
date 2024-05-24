@@ -25,15 +25,9 @@
     You can choose between 3 compression levels, to best adapt the compression to your needs.
   </p>
   <ul>
-    <li>
-      <span class="inline-code">low</span>: the PDF quality is remained
-    </li>
-    <li>
-      <span class="inline-code">medium</span>: images in the PDF may lose slightly quality. This is the default level
-    </li>
-    <li>
-      <span class="inline-code">high</span>: images in the PDF can lose a lot of quality
-    </li>
+    <li v-for="level in CompressionLevel" :key="`compression-${level}`"><span class="inline-code">{{ level }}</span>: {{
+      getCompressionLevelInfo(level)
+    }}</li>
   </ul>
   <pre>
     <code class="language-javascript">
@@ -54,11 +48,18 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 
+import { CompressionLevel, getCompressionLevelInfo } from 'src/types/compressionLevel';
+
 export default defineComponent({
   name: 'CompressGuidePost',
   components: {},
   data() {
-    return {};
+    return {
+      CompressionLevel,
+    };
+  },
+  methods: {
+    getCompressionLevelInfo,
   },
 });
 </script>

@@ -31,13 +31,13 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/features',
     component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/Features.vue') }],
+    children: [{ path: '', name: 'features', component: () => import('pages/Features.vue') }],
   },
   // Pricing
   {
     path: '/pricing',
     component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/Pricing.vue') }],
+    children: [{ path: '', name: 'pricing', component: () => import('pages/Pricing.vue') }],
   },
 
   // Guides

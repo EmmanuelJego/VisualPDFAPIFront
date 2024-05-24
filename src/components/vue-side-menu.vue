@@ -1,5 +1,5 @@
 <template>
-  <div class="side-menu-overlay" :class="{ 'opacity-0': !mobileVisible }" @click="hide" />
+  <div class="side-menu-overlay" :class="{ 'opacity-0 pointer-events-none': !mobileVisible }" @click="hide" />
   <div class="side-menu" :class="mobileVisible ? 'mobile-visible' : 'mobile-hidden'">
     <div v-for="(category, catIndex) in categories" :key="`cat-${catIndex}`">
       <div v-if="categories.length > 1" class="cat-title text-h6 text-bold q-mb-xs">

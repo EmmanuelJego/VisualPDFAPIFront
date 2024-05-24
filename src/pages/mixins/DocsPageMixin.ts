@@ -8,6 +8,7 @@ import 'prismjs/plugins/toolbar/prism-toolbar.js';
 import 'prismjs/plugins/toolbar/prism-toolbar.css';
 
 import 'src/css/pages/docsPage.scss';
+import 'src/css/pages/post.scss';
 
 import vueDocsBottomNav from 'src/components/vue-docs-bottom-nav.vue';
 

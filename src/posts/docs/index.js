@@ -1,17 +1,24 @@
 export default [
   {
-    name: 'API workflow',
+    name: 'Get started',
     items: [
-      { slug: 'create', name: 'Create pipeline' },
-      { slug: 'process', name: 'Process' },
-      { slug: 'download', name: 'Download files' },
+      { slug: 'authentication', name: 'Authentication' },
+      { slug: 'request-workflow', name: 'Request workflow' },
     ],
   },
   {
-    name: 'Tools',
+    name: 'API resources',
     items: [
-      { slug: 'duplicate-pages', name: 'Duplicate pages' },
-      { slug: 'delete-pages', name: 'Delete pages' },
+      { slug: 'process', name: 'Process' },
+      { slug: 'download', name: 'Download' },
+    ],
+  },
+  {
+    name: 'Utility API resources',
+    items: [
+      { slug: 'pipeline-status', name: 'Pipeline status' },
+      { slug: 'quota', name: 'Quota' },
+      { slug: 'status', name: 'Service status' },
     ],
   },
 ];

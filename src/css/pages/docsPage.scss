@@ -1,6 +1,25 @@
-pre[class*=language-] {
+pre[class*=language-], .endpoint > code {
   border-radius: $radius-lg;
   margin: 0 0 16px;
+}
+
+pre[class*=language-].response {
+  background-color: $secondary;
+}
+
+.endpoint {
+  & > code {
+    border: 1px solid $border-color;
+    background-color: $lite-bg;
+    padding: 8px 12px;
+  
+    .post {
+      color: green;
+      font-weight: bold;
+    }
+  }
+
+  margin-top: $spacing-xl;
 }
 
 .code-toolbar > .toolbar {

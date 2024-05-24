@@ -82,6 +82,10 @@ main > *:last-child {
 .opacity-0 {
   opacity: 0;
 }
+
+.pointer-events-none {
+  pointer-events: none;
+}
 // ======
 
 #page-loading-progress {
@@ -163,6 +167,14 @@ main > *:last-child {
   &:after {
     background: radial-gradient(ellipse at center, transparent, $lite-bg 80%);
   }
+}
+
+.link-btn {
+  @extend .text-underline;
+  @extend .min-h-auto;
+
+  font-size: 1rem;
+  padding: 0 8px;
 }
 
 #main-header {

@@ -41,3 +41,5 @@ icons:
       - solid
   - circle-question:
       - regular
+  - download:
+      - regular

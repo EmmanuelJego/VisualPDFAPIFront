@@ -20,8 +20,7 @@
           </div>
           <div>
             <span class="text-muted q-mr-xs">Need to process more?</span>
-            <q-btn unelevated flat no-caps color="primary" label="Contact us"
-              class="text-body1 text-underline q-px-xs min-h-auto" />
+            <q-btn unelevated flat no-caps color="primary" label="Contact us" class="link-btn" />
           </div>
         </div>
         <q-slider v-model="stepIndex" :min="0" color="accent" :max="steps.length - 1" label label-always

@@ -18,6 +18,7 @@ const regularIcons = {
   database: 'fa-database',
   shieldLock: 'fa-shield-keyhole',
   questionCircle: 'fa-circle-question',
+  download: 'fa-download',
 };
 
 Object.keys(regularIcons).forEach((key) => {

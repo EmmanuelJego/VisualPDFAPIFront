@@ -269,7 +269,7 @@
 
           // pipelineResult:
           // {
-          //  taskid: 'the-id-of-the-pipeline',
+          //  pipelineid: 'the-id-of-the-pipeline',
           //  duration: 823,
           //  links: [
           //    'https://api.visualpdf.com/v1/download/id-of-file1',
@@ -299,7 +299,7 @@
 
           // pipelineResult:
           // {
-          //  taskid: 'the-id-of-the-pipeline',
+          //  pipelineid: 'the-id-of-the-pipeline',
           //  webhook-url: 'https://your-domain.com/visual-pdf-webhook'
           //  ...
           // }

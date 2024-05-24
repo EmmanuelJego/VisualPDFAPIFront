@@ -18,9 +18,9 @@
         </div>
       </div>
 
-      <div class="q-mt-xl q-pt-xl text-center">
+      <div class="q-mt-xl q-pt-xl text-center flex items-baseline justify-center">
         Can't find the tool you are looking for?
-        <q-btn unelevated flat no-caps color="primary" label="Let us know" class="text-body1 text-underline q-px-xs" />
+        <q-btn unelevated flat no-caps color="primary" label="Let us know" class="link-btn" />
       </div>
     </div>
   </q-page>

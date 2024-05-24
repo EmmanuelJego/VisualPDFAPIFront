@@ -23,6 +23,13 @@
     font-size: 1rem;
   }
 
+  h5 {
+    margin-top: $spacing-md;
+    margin-bottom: $spacing-md;
+    font-size: 1rem;
+    text-decoration: underline;
+  }
+
   li {
     margin-bottom: 10px;
   }
@@ -30,10 +37,15 @@
   table {
     text-align: left;
     border-collapse: collapse;
+    border-radius: $radius-lg;
 
     th, td {
       padding: 6px 12px;
       border: 1px solid $grey-border-color;
+    }
+
+    thead {
+      background-color: $lite-bg;
     }
   }
 }
