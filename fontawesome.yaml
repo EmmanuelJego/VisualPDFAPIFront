@@ -43,3 +43,5 @@ icons:
       - regular
   - download:
       - regular
+  - play:
+      - solid

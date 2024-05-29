@@ -2,7 +2,14 @@
   <q-page class="flex no-wrap post-page">
     <vue-side-menu :categories="menuCategories" />
     <div class="page-content q-mx-auto q-px-lg">
-      <router-view />
+      <div class="row">
+        <div class="col">
+          <router-view @vue:mounted="onViewMounted" @vue:updated="onViewMounted" />
+        </div>
+
+        <q-tree class="col-3" v-if="summaryReady" :nodes="summaryItems" dense node-key="label" default-expand-all
+          v-model:selected="selectedSummaryItem" no-selection-unset />
+      </div>
 
       <vue-docs-bottom-nav :categories="menuCategories" />
     </div>
@@ -11,6 +18,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+
 import docsCategories from 'src/posts/docs/index.js';
 
 import SideMenuPageMixin from './mixins/SideMenuPageMixin';

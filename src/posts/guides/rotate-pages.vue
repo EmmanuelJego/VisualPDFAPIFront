@@ -23,7 +23,7 @@
         [
           {
             tool: 'rotate-pages',
-            // Rotate the first page 90 degrees
+            // Set first page rotation to 90 degrees
             options: { pages: [{ page: 0, rotation: 90 }] },
           },
         ],
@@ -46,7 +46,7 @@
   </p>
   <pre>
     <code class="language-javascript">
-      // Rotate all pages 90 degrees
+      // The rotation of all pages to 90 degrees
       options: { pages: [{ range: [0, 'last'], rotation: 90 }] }
     </code>
   </pre>
@@ -58,8 +58,8 @@
   </p>
   <pre>
     <code class="language-javascript">
-      // Rotate all pages upside down to put them right side up
-      options: { pages: [{ current: 180, rotation: 180 }] }
+      // Update the rotation of all the upside down pages to put them right side up
+      options: { pages: [{ current: 180, rotation: 0 }] }
     </code>
   </pre>
 
@@ -76,11 +76,11 @@
     <code class="language-javascript">
       options: {
         pages: [
-          // Rotate all pages upside down to put them right side up
-          { current: 180, rotation: 180 },
-          // Now that we are certain that all the pages are right side up,
-          // rotate all pages 90 degrees
-          { range: [0, 'last'], rotation: 90 },
+          // Reversing page rotation...
+          // Change the rotation of pages right side up to put them upside down
+          { current: 0, rotation: 180 },
+          // Change the rotation of pages upside down to put them right side up
+          { current: 180, rotation: 0 },
         ],
       },
     </code>

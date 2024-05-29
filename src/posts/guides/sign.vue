@@ -197,7 +197,7 @@
   </p>
   <ul>
     <li><span class="inline-code">color</span>: the color of the text</li>
-    <li><span class="inline-code">font</span>: the font of the text, among those available</li>
+    <li><span class="inline-code">font</span>: the font of the text, among <router-link :to="{ name: 'guides-fonts' }">those available</router-link></li>
   </ul>
 </template>
 

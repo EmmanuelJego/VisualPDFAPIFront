@@ -11,6 +11,8 @@ interface Feature {
   imageSrc?: string;
   link1?: FeatureLink;
   link2?: FeatureLink;
+  category?: string;
+  id?: string;
 }
 
 export { Feature, FeatureLink };

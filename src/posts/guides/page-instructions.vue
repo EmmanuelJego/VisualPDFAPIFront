@@ -46,7 +46,7 @@
     These 2 methods can be combined to indicate both single pages and ranges of pages.
   </p>
 
-  <h2>Shortcuts</h2>
+  <h2 id="shortcuts">Shortcuts</h2>
   <p>
     Some shortcuts will allow you to calculate page indexes more easily. These shortcuts are even more useful when you
     do not know in advance the number of pages contained in a PDF.
@@ -58,6 +58,7 @@
     <li><span class="inline-code">first</span>: targets the first page (same as specifying <span
         class="inline-code">0</span>)</li>
     <li><span class="inline-code">last</span>: targets the last page</li>
+    <li><span class="inline-code">all</span>: targets all pages</li>
     <li>
       <b>calculation</b>: you can combine a shortcut with a calculation using the operator <span
         class="inline-code">-</span> or <span class="inline-code">/</span> to get the index of a page

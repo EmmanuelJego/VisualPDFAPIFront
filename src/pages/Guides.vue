@@ -1,8 +1,15 @@
 <template>
   <q-page class="flex no-wrap post-page">
     <vue-side-menu :categories="menuCategories" />
-    <div class="page-content q-mx-auto q-px-lg overflow-x-hidden">
-      <router-view />
+    <div class="page-content q-mx-auto q-px-lg">
+      <div class="row">
+        <div class="col-9 overflow-x-hidden">
+          <router-view @vue:mounted="onViewMounted" @vue:updated="onViewMounted" />
+        </div>
+
+        <q-tree class="col-3" v-if="summaryReady" :nodes="summaryItems" dense node-key="label" default-expand-all
+          v-model:selected="selectedSummaryItem" no-selection-unset />
+      </div>
 
       <vue-docs-bottom-nav :categories="menuCategories" :next-text="'Next guide'" :previous-text="'Previous guide'" />
     </div>
@@ -11,6 +18,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+
 import guidesCategories from 'src/posts/guides/index.js';
 
 import SideMenuPageMixin from './mixins/SideMenuPageMixin';

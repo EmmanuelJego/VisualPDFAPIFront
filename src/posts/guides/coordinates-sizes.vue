@@ -6,7 +6,7 @@
       :to="{ name: 'guides-images-to-pdf' }">images to PDF</router-link>).
   </p>
 
-  <h2>Coordinates on a PDF page</h2>
+  <h2 id="coordinates">Coordinates on a PDF page</h2>
   <p>
     The origin of the coordinates on a PDF is located at the <b>bottom left</b> of the pages.
   </p>
@@ -76,7 +76,7 @@
     </code>
   </pre>
 
-  <h2>Sizes</h2>
+  <h2 id="sizes">Sizes</h2>
   <p>
     Similar to coordinates, you can specify a width or height absolutely (fixed size) or relatively (calculated
     according to the height or width of the page).

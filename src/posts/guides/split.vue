@@ -59,7 +59,7 @@
           // Creating one file taking the first and second pages
           { pages: [0, 1] },
           // Creating another file taking the 3rd to 7th pages, plus the last one
-          { pages: [{ range: [2, 8], 'last' }] },
+          { pages: [{ range: [2, 8] }, 'last'] },
         ],
       }
     </code>
@@ -71,7 +71,7 @@
       class="inline-code">X</span> being the given interval).
   </p>
   <p>
-    For example, let's take a file of 1 to pages, with an interval of 2. This method will allow you to obtain 5 files,
+    For example, let's take a file of 10 pages, with an interval of 2. This method will allow you to obtain 5 files,
     each containing 2 pages.
   </p>
   <p>
