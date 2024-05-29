@@ -269,11 +269,10 @@
 
           // pipelineResult:
           // {
-          //  pipelineid: 'the-id-of-the-pipeline',
+          //  pipelineid: '6ecd8c99-4036-403d-bf84-cf8400f67836',
           //  duration: 823,
-          //  links: [
-          //    'https://api.visualpdf.com/v1/download/id-of-file1',
-          //    'https://api.visualpdf.com/v1/download/id-of-file2'
+          //  files: [
+          //    ...
           //  ],
           //  ...
           // }
@@ -299,7 +298,7 @@
 
           // pipelineResult:
           // {
-          //  pipelineid: 'the-id-of-the-pipeline',
+          //  pipelineid: '6ecd8c99-4036-403d-bf84-cf8400f67836',
           //  webhook-url: 'https://your-domain.com/visual-pdf-webhook'
           //  ...
           // }
@@ -314,11 +313,10 @@
 
             // pipelineResult:
             // {
-            //  taskid: 'the-id-of-the-pipeline',
+            //  taskid: '6ecd8c99-4036-403d-bf84-cf8400f67836',
             //  duration: 901,
-            //  links: [
-            //    'https://api.visualpdf.com/v1/download/id-of-file1',
-            //    'https://api.visualpdf.com/v1/download/id-of-file2'
+            //  files: [
+            //    ...
             //  ],
             //  ...
             // }

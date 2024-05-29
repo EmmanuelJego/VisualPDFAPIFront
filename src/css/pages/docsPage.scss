@@ -12,9 +12,19 @@ pre[class*=language-].response {
     border: 1px solid $border-color;
     background-color: $lite-bg;
     padding: 8px 12px;
+    display: inline-flex;
+    overflow-x: auto;
+    max-width: 100%;
+    gap: 12px;
+    margin-bottom: 0;
   
     .post {
-      color: green;
+      color: $green-9;
+      font-weight: bold;
+    }
+
+    .get {
+      color: $blue-9;
       font-weight: bold;
     }
   }
@@ -68,7 +78,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-left: $spacing-md;
 }
 
-.q-tree {
+.docs-summary {
   $tree-top: $header-height + 1px;
 
   margin-top: $spacing-lg * 2;
@@ -77,8 +87,10 @@ h1, h2, h3, h4, h5, h6 {
   position: sticky;
   top: $tree-top;
   height: fit-content !important;
-  max-height: calc(100vh - $tree-top) !important;
+  max-height: calc(100vh - $tree-top - ($spacing-lg * 2)) !important;
   line-height: 1.2;
+  overflow-y: auto;
+  font-size: 15px;
 
   .q-tree__node--selected .q-tree__node-header-content {
     color: $primary !important;
@@ -96,9 +108,21 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+.docs-content {
+  overflow-x: hidden;
+}
+
+.q-separator--horizontal {
+  margin-top: $spacing-lg;
+}
+
 @media only screen and (max-width: 899px) {
   /* For mobile phones */
-  .q-tree {
+  .docs-summary {
     display: none;
+  }
+
+  .docs-content.col-9 {
+    width: 100% !important;
   }
 }

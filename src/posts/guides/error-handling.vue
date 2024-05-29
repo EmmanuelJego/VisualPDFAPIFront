@@ -37,7 +37,7 @@
 
         // Downloading the compressed PDF
         const fileResponse = await fetch(
-          pipelineResult.links[0],
+          pipelineResult.files[0].link,
           {
             method: 'GET',
             headers: { Authorization: `Bearer ${my_API_key}` },

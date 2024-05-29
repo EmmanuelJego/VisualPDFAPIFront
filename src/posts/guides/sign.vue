@@ -29,10 +29,9 @@
             options: {
               signatures: [
                 {
-                  // Inserting the signature at x=30 y=50
-                  position: [30, 50],
-                  // The signature will be contained in a rectangle with a width of 150 and height of 100
-                  'bouding-box': [150, 100],
+                  // Inserting the signature at x=30 y=50 (center)
+                  // with a maximum width of 150 and maximum height of 100
+                  box: [30, 50, 150, 100],
                   // Indicate which file is to be used for signature
                   file: 'signature-1',
                   pages: [0],
@@ -62,8 +61,7 @@
       options: {
         signatures: [
           {
-            position: [250, 50],
-            'bouding-box': [200, 100],
+            box: [250, 50, 200, 100],
             text: 'Good for agreement',
             color: '#0000ff',
             font: 'libre-baskerville',
@@ -103,20 +101,17 @@
             options: {
               signatures: [
                 {
-                  position: [30, 50],
-                  'bouding-box': [150, 100],
+                  box: [30, 50, 150, 100],
                   file: 'signature-1',
                   pages: ['all'],
                 },
                 {
-                  position: [250, 50],
-                  'bouding-box': [150, 100],
+                  box: [250, 50, 150, 100],
                   file: 'signature-2',
                   pages: ['all'],
                 },
                 {
-                  position: [250, 100],
-                  'bouding-box': [200, 100],
+                  box: [250, 100, 200, 100],
                   text: 'John\'s signature',
                   color: '#000000',
                   font: 'libre-baskerville',
@@ -139,48 +134,36 @@
     Let's see here an exhaustive list of these options, their meaning and their possible values.
   </p>
 
-  <h3>Position</h3>
-  <p>
-    This is the position of the center of the signature.
-  </p>
-  <p>
-    It is represented by an array in the format <span class="inline-code">[x, y]</span> and can be expressed in relative
-    or absolute values:
-  </p>
-  <ul>
-    <li>
-      <b>absolute</b>: the values indicated correspond to the coordinates on the page, knowing that the origin is the
-      bottom left of the page
-    </li>
-
-    <li>
-      <b>relative</b>: the values shown represent a percentage of the width or height of the page (ex: <span
-        class="inline-code">10w</span> for 10% of the page width)
-    </li>
-  </ul>
-
-  <h3>Bouding box</h3>
+  <h3>Box</h3>
   <p>
     This is a rectangle in which the signature will be included. It will not be visible on the PDF, but allows you to
-    indicate the maximum width and height of the signature. Depending on the shape of the signature, it will occupy the
+    indicate the position, maximum width and maximum height of the signature. Depending on the shape of the signature,
+    it will occupy the
     entire width or the entire height of this rectangle.
   </p>
   <p>
-    It is represented by an array in the format <span class="inline-code">[width, height]</span> and can be expressed,
-    as the position, in relative or absolute values.
+    It is represented by an array in the format <span class="inline-code">[x, y, width, height]</span> and can be
+    expressed in <router-link :to="{ name: 'guides-coordinates-sizes' }">relative or absolute values</router-link>.
+  </p>
+  <p>
+    The <span class="inline-code">x</span> and <span class="inline-code">y</span> parameters represent the coordinates
+    of the <b>center of the box</b>. This way, if you rotate the signature, this coordinate will always be the center of
+    the signature.
   </p>
 
   <h3>Rotation</h3>
   <p>
     This parameter allows you to rotate a signature, with the angle of your choice, expressed in degrees.
   </p>
+  <p>
+    The origin of the rotation is the center of the signature.
+  </p>
   <pre>
     <code class="language-javascript">
       options: {
         signatures: [
           {
-            position: [250, 50],
-            'bouding-box': [200, 100],
+            box: [250, 50, 200, 100],
             file: 'signature-1',
             pages: [0],
             // Rotate the signature 15 degrees
@@ -197,7 +180,8 @@
   </p>
   <ul>
     <li><span class="inline-code">color</span>: the color of the text</li>
-    <li><span class="inline-code">font</span>: the font of the text, among <router-link :to="{ name: 'guides-fonts' }">those available</router-link></li>
+    <li><span class="inline-code">font</span>: the font of the text, among <router-link
+        :to="{ name: 'guides-fonts' }">those available</router-link></li>
   </ul>
 </template>
 

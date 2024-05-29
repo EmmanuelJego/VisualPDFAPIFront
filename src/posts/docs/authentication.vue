@@ -41,6 +41,13 @@
       )
     </code>
   </pre>
+
+  <h2>Testing authentication</h2>
+  <p>
+    If you want to test your authentication and your API key, you can use the <router-link
+      :to="{ name: 'docs-status' }">service status</router-link> endpoint, that will respond with a success message when
+    your authentication is successful.
+  </p>
 </template>
 
 <script lang="ts">

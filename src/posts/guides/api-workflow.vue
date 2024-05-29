@@ -121,7 +121,7 @@
     <code class="language-javascript">
       // Downloading the first processed file
       const fileResponse = await fetch(
-        pipelineResult.links[0],  // Just use the already-built linked from the pipeline result
+        pipelineResult.files[0].link,  // Just use the already-built link from the pipeline result
         {
           method: 'GET',
           headers: {

@@ -34,8 +34,8 @@
     The <span class="inline-code">shift</span> parameter allows you to specify:
   </p>
   <ul>
-    <li>an offset downward (or to the right) if its value is positive</li>
-    <li>an offset upward (or to the left) if its value is negative</li>
+    <li>an offset towards the end of the file if its value is positive</li>
+    <li>an offset towards the start of the file if its value is negative</li>
   </ul>
 
   <h2>Moving a page range</h2>

@@ -170,6 +170,8 @@ export default defineComponent({
           } else if (child.nodeName === 'H4') {
             if (h3Parent) {
               h3Parent?.children?.push(item);
+            } else if (h2Parent) {
+              h2Parent?.children?.push(item);
             } else {
               this.summaryItems.push(item);
             }

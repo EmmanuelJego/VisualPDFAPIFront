@@ -15,7 +15,7 @@
           <div class="text-h6 flex items-center">
             Number of files to process
             <vue-help-tooltip class="q-ml-sm text-muted text-body1">
-              1 file credit corresponds to 1 file being processed by 1 tool.
+              <span class="text-body2">1 file credit corresponds to 1 file being processed by 1 tool.</span>
             </vue-help-tooltip>
           </div>
           <div>

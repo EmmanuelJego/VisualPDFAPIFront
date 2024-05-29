@@ -3,12 +3,12 @@
     <vue-side-menu :categories="menuCategories" />
     <div class="page-content q-mx-auto q-px-lg">
       <div class="row">
-        <div class="col-9 overflow-x-hidden">
+        <div class="col-9 docs-content">
           <router-view @vue:mounted="onViewMounted" @vue:updated="onViewMounted" />
         </div>
 
-        <q-tree class="col-3" v-if="summaryReady" :nodes="summaryItems" dense node-key="label" default-expand-all
-          v-model:selected="selectedSummaryItem" no-selection-unset />
+        <q-tree class="col-3 docs-summary" v-if="summaryReady" :nodes="summaryItems" dense node-key="label"
+          default-expand-all v-model:selected="selectedSummaryItem" no-selection-unset />
       </div>
 
       <vue-docs-bottom-nav :categories="menuCategories" :next-text="'Next guide'" :previous-text="'Previous guide'" />

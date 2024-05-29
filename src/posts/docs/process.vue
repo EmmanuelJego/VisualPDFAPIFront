@@ -15,7 +15,7 @@
       class="inline-code">multipart/form-data</span> format.
   </p>
 
-  <h3>Parameters</h3>
+  <h2>Parameters</h2>
   <vue-parameters-table>
     <!-- Files -->
     <tr>
@@ -36,13 +36,13 @@
     <!-- Options -->
     <tr>
       <td>options</td>
-      <td>Pipeline options.</td>
-      <td>Object</td>
+      <td>Pipeline options (filenames, wait/async, archive, etc.).</td>
+      <td><a href="/docs/process#pipeline-options">Pipeline options object</a></td>
       <td>No</td>
     </tr>
   </vue-parameters-table>
 
-  <h3>Example</h3>
+  <h2>Example</h2>
 
   <h4>Request (NodeJS)</h4>
   <pre>
@@ -75,16 +75,20 @@
       {
         pipelineid: '6ecd8c99-4036-403d-bf84-cf8400f67836',
         duration: 823,
-        links: [
-          'https://api.visualpdf.com/v1/download/40e6215d-b5c6-4896-987c-f30f3678f608',
+        files: [
+          {
+            name: 'compress_1',
+            id: '40e6215d-b5c6-4896-987c-f30f3678f608',
+            link: 'https://api.visualpdf.com/v1/download/40e6215d-b5c6-4896-987c-f30f3678f608',
+          },
         ],
-        filescount: 1,
-        status: "succeeded",
+        status: 'succeeded',
+        started: '2024-05-29T16:08:43.511Z',
       }
     </code>
   </pre>
 
-  <h3 id="task-object">Task object</h3>
+  <h2 id="task-object">Task object</h2>
   <vue-parameters-table>
     <!-- Tool -->
     <tr>
@@ -118,11 +122,11 @@
     </li>
   </ul>
 
-  <h3>Task options</h3>
+  <h2>Task options</h2>
 
   <!-- Add password -->
   <h4 id="add-password">Add PDF password</h4>
-  <span class="inline-code">add-password</span>
+  <!-- <span class="inline-code">add-password</span> -->
   <vue-parameters-table>
     <tr>
       <td>password</td>
@@ -141,8 +145,10 @@
     </code>
   </pre>
 
+  <q-separator />
+
   <!-- Compress -->
-  <h4 id="compress">compress</h4>
+  <h4 id="compress">Compress PDF</h4>
   <vue-parameters-table :cols="['Name', 'Description', 'Type', 'Default']">
     <tr>
       <td>level</td>
@@ -152,7 +158,7 @@
     </tr>
   </vue-parameters-table>
   <div class="indent">
-    <h5 id="compression-levels">Compression levels:</h5>
+    <h5 id="compression-levels">Compression levels</h5>
     <ul>
       <li v-for="level in CompressionLevel" :key="`compression-${level}`"><span class="inline-code">{{ level }}</span>:
         {{
@@ -160,9 +166,20 @@
     }}</li>
     </ul>
   </div>
+  <h5>Example</h5>
+  <pre>
+    <code class="language-javascript">
+      {
+        tool: 'compress',
+        options: { level: 'high' },
+      }
+    </code>
+  </pre>
+
+  <q-separator />
 
   <!-- Crop -->
-  <h4 id="crop-pages">crop-pages</h4>
+  <h4 id="crop-pages">Crop pages</h4>
   <vue-parameters-table :cols="['Name', 'Description', 'Type', 'Required']">
     <tr>
       <td>pages</td>
@@ -214,9 +231,20 @@
       </tr>
     </vue-parameters-table>
   </div>
+  <h5>Example</h5>
+  <pre>
+    <code class="language-javascript">
+      {
+        tool: 'crop-pages',
+        options: { pages: [{ page: 'all', box: [10, 20, 300, 200] }] },
+      }
+    </code>
+  </pre>
+
+  <q-separator />
 
   <!-- Delete -->
-  <h4 id="delete-pages">delete-pages</h4>
+  <h4 id="delete-pages">Delete pages</h4>
   <vue-parameters-table :cols="['Name', 'Description', 'Type', 'Required']">
     <tr>
       <td>pages</td>
@@ -226,9 +254,20 @@
       <td>True</td>
     </tr>
   </vue-parameters-table>
+  <h5>Example</h5>
+  <pre>
+    <code class="language-javascript">
+      {
+        tool: 'delete-pages',
+        options: { pages: [0, { range: ['last-1', 'last'] }] },
+      }
+    </code>
+  </pre>
+
+  <q-separator />
 
   <!-- Duplicate -->
-  <h4 id="duplicate-pages">duplicate-pages</h4>
+  <h4 id="duplicate-pages">Duplicate pages</h4>
   <vue-parameters-table :cols="['Name', 'Description', 'Type', 'Required']">
     <tr>
       <td>pages</td>
@@ -292,15 +331,36 @@
       </tr>
     </vue-parameters-table>
   </div>
+  <h5>Example</h5>
+  <pre>
+    <code class="language-javascript">
+      {
+        tool: 'duplicate-pages',
+        options: { pages: [{ page: 0, duplicates: 2, position: 'last' }] },
+      }
+    </code>
+  </pre>
+
+  <q-separator />
 
   <!-- Excel to PDF -->
-  <h4 id="excel-to-pdf">excel-to-pdf</h4>
+  <h4 id="excel-to-pdf">Excel to PDF</h4>
   <p>
     This tool does not offer additional options.
   </p>
+  <h5>Example</h5>
+  <pre>
+    <code class="language-javascript">
+      {
+        tool: 'excel-to-pdf',
+      }
+    </code>
+  </pre>
+
+  <q-separator />
 
   <!-- Images to PDF -->
-  <h4 id="images-to-pdf">images-to-pdf</h4>
+  <h4 id="images-to-pdf">Images to PDF</h4>
   <vue-parameters-table :cols="['Name', 'Description', 'Type', 'Required', 'Default']">
     <tr>
       <td>page-size</td>
@@ -328,9 +388,23 @@
       <td><span class="inline-code">false</span></td>
     </tr>
   </vue-parameters-table>
+  <h5>Example</h5>
+  <pre>
+    <code class="language-javascript">
+      {
+        tool: 'images-to-pdf',
+        options: {
+            'page-size': 'A4',
+            margins: '10h',
+          }
+      }
+    </code>
+  </pre>
+
+  <q-separator />
 
   <!-- Merge -->
-  <h4 id="merge">merge</h4>
+  <h4 id="merge">Merge PDFs</h4>
   <vue-parameters-table :cols="['Name', 'Description', 'Type', 'Required', 'Example']">
     <tr>
       <td>order</td>
@@ -341,9 +415,20 @@
       <td><span class="inline-code">[1, 0, 2]</span></td>
     </tr>
   </vue-parameters-table>
+  <h5>Example</h5>
+  <pre>
+    <code class="language-javascript">
+      {
+        tool: 'merge',
+        options: { order: [1, 0] },
+      }
+    </code>
+  </pre>
+
+  <q-separator />
 
   <!-- Order -->
-  <h4 id="order-pages">order-pages</h4>
+  <h4 id="order-pages">Order pages</h4>
   <vue-parameters-table :cols="['Name', 'Description', 'Type', 'Required']">
     <tr>
       <td>pages</td>
@@ -396,9 +481,20 @@
       </tr>
     </vue-parameters-table>
   </div>
+  <h5>Example</h5>
+  <pre>
+    <code class="language-javascript">
+      {
+        tool: 'order-pages',
+        options: { pages: [{ page: 0, shift: 2 }, { page: 'last', position: 0 }] },
+      }
+    </code>
+  </pre>
+
+  <q-separator />
 
   <!-- PDF to images -->
-  <h4 id="pdf-to-images">pdf-to-images</h4>
+  <h4 id="pdf-to-images">PDF to images</h4>
   <vue-parameters-table :cols="['Name', 'Description', 'Type', 'Required']">
     <tr>
       <td>pages</td>
@@ -408,15 +504,36 @@
       <td>No</td>
     </tr>
   </vue-parameters-table>
+  <h5>Example</h5>
+  <pre>
+    <code class="language-javascript">
+      {
+        tool: 'pdf-to-images',
+        options: { pages: ['all'] },
+      }
+    </code>
+  </pre>
+
+  <q-separator />
 
   <!-- PowerPoint to PDF -->
-  <h4 id="ppt-to-pdf">ppt-to-pdf</h4>
+  <h4 id="ppt-to-pdf">PowerPoint to PDF</h4>
   <p>
     This tool does not offer additional options.
   </p>
+  <h5>Example</h5>
+  <pre>
+    <code class="language-javascript">
+      {
+        tool: 'ppt-to-pdf',
+      }
+    </code>
+  </pre>
+
+  <q-separator />
 
   <!-- Remove password -->
-  <h4 id="remove-password">remove-password</h4>
+  <h4 id="remove-password">Remove PDF password</h4>
   <vue-parameters-table :cols="['Name', 'Description', 'Type', 'Required']">
     <tr>
       <td>password</td>
@@ -425,9 +542,20 @@
       <td>Yes</td>
     </tr>
   </vue-parameters-table>
+  <h5>Example</h5>
+  <pre>
+    <code class="language-javascript">
+      {
+        tool: 'remove-password',
+        options: { password: 'pwd_t0_r3m0v3' },
+      }
+    </code>
+  </pre>
+
+  <q-separator />
 
   <!-- Rotate -->
-  <h4 id="rotate-pages">rotate-pages</h4>
+  <h4 id="rotate-pages">Rotate pages</h4>
   <vue-parameters-table :cols="['Name', 'Description', 'Type', 'Required']">
     <tr>
       <td>pages</td>
@@ -477,9 +605,20 @@
       </tr>
     </vue-parameters-table>
   </div>
+  <h5>Example</h5>
+  <pre>
+    <code class="language-javascript">
+      {
+        tool: 'rotate-pages',
+        options: { pages: [{ page: 'all', rotation: 90 }] },
+      }
+    </code>
+  </pre>
+
+  <q-separator />
 
   <!-- Sign -->
-  <h4 id="sign">sign</h4>
+  <h4 id="sign">Sign PDF</h4>
   <vue-parameters-table :cols="['Name', 'Description', 'Type', 'Required']">
     <tr>
       <td>signatures</td>
@@ -495,13 +634,15 @@
         <td>pages</td>
         <td>The pages on which to add the signature.</td>
         <td>Array of <router-link :to="{ name: 'guides-page-instructions' }">page instructions</router-link></td>
-        <td><span class="inline-code">[0]</span>, <span class="inline-code">[0, 'last']</span>, <span class="inline-code">[{range: [0, 3]}]</span></td>
+        <td><span class="inline-code">[0]</span>, <span class="inline-code">[0, 'last']</span>, <span
+            class="inline-code">[{range: [0, 3]}]</span></td>
         <td>Yes</td>
         <td></td>
       </tr>
       <tr>
         <td>box</td>
-        <td>Rectangle in which the signature will be contained. Allows you to indicate the position and size of the signature. The signature will occupy as much space as possible in this rectangle and will be centered.</td>
+        <td>Rectangle in which the signature will be contained. Allows you to indicate the position and size of the
+          signature. The signature will occupy as much space as possible in this rectangle and will be centered.</td>
         <td>Array of <router-link
             :to="{ name: 'guides-coordinates-sizes', hash: '#coordinates' }">coordinates</router-link> and <router-link
             :to="{ name: 'guides-coordinates-sizes', hash: '#sizes' }">sizes</router-link> (<span
@@ -512,7 +653,8 @@
       </tr>
       <tr>
         <td>file</td>
-        <td>The field name used in the <span class="inline-code">multipart/form-data</span> request for the signature file. Alternatively, use the <span class="inline-code">text</span> option to add a signature from text.</td>
+        <td>The field name used in the <span class="inline-code">multipart/form-data</span> request for the signature
+          file. Alternatively, use the <span class="inline-code">text</span> option to add a signature from text.</td>
         <td>String</td>
         <td><span class="inline-code">'my-signature'</span></td>
         <td>No, if <span class="inline-code">text</span> is set</td>
@@ -528,7 +670,8 @@
       </tr>
       <tr>
         <td>color</td>
-        <td>The color of the text in hexadecimal format. Only useful when using the <span class="inline-code">text</span> option.</td>
+        <td>The color of the text in hexadecimal format. Only useful when using the <span
+            class="inline-code">text</span> option.</td>
         <td>String</td>
         <td><span class="inline-code">#ff00ff</span></td>
         <td>No</td>
@@ -536,7 +679,8 @@
       </tr>
       <tr>
         <td>font</td>
-        <td>The font of the text, among <router-link :to="{ name: 'guides-fonts' }">those available</router-link>. Only useful when using the <span class="inline-code">text</span> option.</td>
+        <td>The font of the text, among <router-link :to="{ name: 'guides-fonts' }">those available</router-link>. Only
+          useful when using the <span class="inline-code">text</span> option.</td>
         <td>String</td>
         <td><span class="inline-code">special-elite</span></td>
         <td>No</td>
@@ -552,14 +696,34 @@
       </tr>
     </vue-parameters-table>
   </div>
+  <h5>Example</h5>
+  <pre>
+    <code class="language-javascript">
+      {
+        tool: 'sign',
+        options: {
+          signatures: [
+            {
+              box: [30, 50, 150, 100],
+              file: 'signature-1',
+              pages: ['last'],
+            },
+          ],
+        },
+      }
+    </code>
+  </pre>
+
+  <q-separator />
 
   <!-- Split -->
-  <h4 id="split">split</h4>
+  <h4 id="split">Split/extract PDF pages</h4>
   <vue-parameters-table :cols="['Name', 'Description', 'Type', 'Examples', 'Required']">
     <tr>
       <td>cuts</td>
       <td>Positions where to cut the original file.</td>
-      <td>Array of numbers (indexes of pages after which to cut) or <router-link :to="{ name: 'guides-page-instructions', hash: '#shortcuts' }">shortcuts</router-link></td>
+      <td>Array of numbers (indexes of pages after which to cut) or <router-link
+          :to="{ name: 'guides-page-instructions', hash: '#shortcuts' }">shortcuts</router-link></td>
       <td><span class="inline-code">[2, 5]</span></td>
       <td>No, if <span class="inline-code">files</span> or <span class="inline-code">interval</span> is set</td>
     </tr>
@@ -572,7 +736,8 @@
     </tr>
     <tr>
       <td>interval</td>
-      <td>Page interval after which a new cut is created. For sintance, an interval of <span class="inline-code">2</span> allows the file to be split every 2 pages.</td>
+      <td>Page interval after which a new cut is created. For sintance, an interval of <span
+          class="inline-code">2</span> allows the file to be split every 2 pages.</td>
       <td>Number</td>
       <td><span class="inline-code">2</span></td>
       <td>No, if <span class="inline-code">files</span> or <span class="inline-code">cuts</span> is set</td>
@@ -585,15 +750,26 @@
         <td>pages</td>
         <td>Pages or ranges to include in that file.</td>
         <td>Array of <router-link :to="{ name: 'guides-page-instructions' }">page
-          instructions</router-link></td>
+            instructions</router-link></td>
         <td><span class="inline-code">[0, 1]</span>, <span class="inline-code">[{ range: [2, 8] }, 'last']</span></td>
         <td>Yes</td>
       </tr>
     </vue-parameters-table>
   </div>
+  <h5>Example</h5>
+  <pre>
+    <code class="language-javascript">
+      {
+        tool: 'split',
+        options: { cuts: ['last/2'] },
+      }
+    </code>
+  </pre>
+
+  <q-separator />
 
   <!-- Watermark -->
-  <h4 id="watermark">watermark</h4>
+  <h4 id="watermark">Add watermark</h4>
   <vue-parameters-table :cols="['Name', 'Description', 'Type', 'Required']">
     <tr>
       <td>watermarks</td>
@@ -609,13 +785,15 @@
         <td>pages</td>
         <td>The pages on which to add the watermark.</td>
         <td>Array of <router-link :to="{ name: 'guides-page-instructions' }">page instructions</router-link></td>
-        <td><span class="inline-code">['all']</span>, <span class="inline-code">[0, 'last']</span>, <span class="inline-code">[{range: [0, 3]}]</span></td>
+        <td><span class="inline-code">['all']</span>, <span class="inline-code">[0, 'last']</span>, <span
+            class="inline-code">[{range: [0, 3]}]</span></td>
         <td>Yes</td>
         <td></td>
       </tr>
       <tr>
         <td>box</td>
-        <td>Rectangle in which the watermark will be contained. Allows you to indicate the position and size of the watermark. The watermark will occupy as much space as possible in this rectangle and will be centered.</td>
+        <td>Rectangle in which the watermark will be contained. Allows you to indicate the position and size of the
+          watermark. The watermark will occupy as much space as possible in this rectangle and will be centered.</td>
         <td>Array of <router-link
             :to="{ name: 'guides-coordinates-sizes', hash: '#coordinates' }">coordinates</router-link> and <router-link
             :to="{ name: 'guides-coordinates-sizes', hash: '#sizes' }">sizes</router-link> (<span
@@ -626,7 +804,8 @@
       </tr>
       <tr>
         <td>file</td>
-        <td>The field name used in the <span class="inline-code">multipart/form-data</span> request for the watermark file. Alternatively, use the <span class="inline-code">text</span> option to add a watermark from text.</td>
+        <td>The field name used in the <span class="inline-code">multipart/form-data</span> request for the watermark
+          file. Alternatively, use the <span class="inline-code">text</span> option to add a watermark from text.</td>
         <td>String</td>
         <td><span class="inline-code">'my-watermark'</span></td>
         <td>No, if <span class="inline-code">text</span> is set</td>
@@ -642,7 +821,8 @@
       </tr>
       <tr>
         <td>color</td>
-        <td>The color of the text in hexadecimal format. Only useful when using the <span class="inline-code">text</span> option.</td>
+        <td>The color of the text in hexadecimal format. Only useful when using the <span
+            class="inline-code">text</span> option.</td>
         <td>String</td>
         <td><span class="inline-code">#ff00ff</span></td>
         <td>No</td>
@@ -650,7 +830,8 @@
       </tr>
       <tr>
         <td>font</td>
-        <td>The font of the text, among <router-link :to="{ name: 'guides-fonts' }">those available</router-link>. Only useful when using the <span class="inline-code">text</span> option.</td>
+        <td>The font of the text, among <router-link :to="{ name: 'guides-fonts' }">those available</router-link>. Only
+          useful when using the <span class="inline-code">text</span> option.</td>
         <td>String</td>
         <td><span class="inline-code">special-elite</span></td>
         <td>No</td>
@@ -674,12 +855,180 @@
       </tr>
     </vue-parameters-table>
   </div>
+  <h5>Example</h5>
+  <pre>
+    <code class="language-javascript">
+      {
+        tool: 'sign',
+        options: {
+          watermarks: [
+            {
+              box: ['50w', '50h', 300, 300],
+              text: 'confidential',
+              color: '#ff0000',
+              font: 'special-elite',
+              rotation: -45,
+              opacity: 0.5,
+              pages: ['all'],
+            },
+          ],
+        },
+      }
+    </code>
+  </pre>
+
+  <q-separator />
 
   <!-- Word to PDF -->
-  <h4 id="word-to-pdf">word-to-pdf</h4>
+  <h4 id="word-to-pdf">Word to PDF</h4>
   <p>
     This tool does not offer additional options.
   </p>
+  <h5>Example</h5>
+  <pre>
+    <code class="language-javascript">
+      {
+        tool: 'word-to-pdf',
+      }
+    </code>
+  </pre>
+
+  <q-separator />
+
+  <h2 id="pipeline-options">Pipeline options</h2>
+  <vue-parameters-table :cols="['Name', 'Description', 'Type', 'Default']">
+    <!-- Download format -->
+    <tr>
+      <td>format</td>
+      <td>The download format of files generated by the pipeline (separate files or archived in a zip file).</td>
+      <td>String, <span class="inline-code">file</span> or <span class="inline-code">archive</span></td>
+      <td><span class="inline-code">file</span></td>
+    </tr>
+    <!-- File names -->
+    <tr>
+      <td>file-names</td>
+      <td>Pipeline output file names. This array must be based on the order of the files output from the last task in
+        the pipeline. You can include <a href="/docs/process#filename-shortcuts">filename shortcuts</a>.</td>
+      <td>Array of strings</td>
+      <td>None, <span class="inline-code">file-names-pattern</span> is used by default.</td>
+    </tr>
+    <!-- File names pattern -->
+    <tr>
+      <td>file-names-pattern</td>
+      <td>A pattern to generate the name of output files. You can include <a
+          href="/docs/process#filename-shortcuts">filename shortcuts</a>. If the indicated pattern does not allow having
+        all different file names, a <span class="inline-code">{nb}</span> prefix will be automatically applied.</td>
+      <td>String</td>
+      <td><span class="inline-code">{tool}_{nb}</span></td>
+    </tr>
+    <!-- Archive name -->
+    <tr>
+      <td>archive-name</td>
+      <td>The name of the zip archive file, if <span class="inline-code">format</span> is <span
+          class="inline-code">archive</span>. You can use <span class="inline-code">file-names</span> or <span
+          class="inline-code">file-names-pattern</span> to customize the name of files inside the archive.</td>
+      <td>String</td>
+      <td><span class="inline-code">{tool}</span></td>
+    </tr>
+    <!-- Wait mode -->
+    <tr>
+      <td>mode</td>
+      <td>If the query waits for the pipeline to be processed completely to return a result or if the query triggers the
+        pipeline (executed in the background) and immediately returns a result.</td>
+      <td><a href="/docs/process#wait-modes">Wait mode</a></td>
+      <td><span class="inline-code">wait</span></td>
+    </tr>
+    <tr>
+      <td>webhook-url</td>
+      <td>Webhook called with a <span class="inline-code">POST</span> request when the pipeline is complete. Only taken
+        into account when <span class="inline-code">mode</span> is <span class="inline-code">async</span>.</td>
+      <td>String</td>
+      <td></td>
+    </tr>
+    <!-- Input files passwords -->
+    <tr>
+      <td>passwords</td>
+      <td>Input files passwords. Object whose keys are the names of the fields used for the <span
+          class="inline-code">multipart/form-data</span> files and whose values are the associated passwords.</td>
+      <td>Object</td>
+      <td></td>
+    </tr>
+  </vue-parameters-table>
+  <div class="indent">
+    <h5 id="filename-shortcuts">Filename shortcuts</h5>
+    <ul>
+      <li><span class="inline-code">{nb}</span>: the index of the file, according to the result of the last task</li>
+      <li><span class="inline-code">{date}</span>: the current date when the file was generated by the API</li>
+      <li><span class="inline-code">{tool}</span>: the name of the last tool of the pipeline</li>
+    </ul>
+    <h5 id="wait-modes">Wait modes</h5>
+    <ul>
+      <li>
+        <span class="inline-code">wait</span>: the request will wait until the pipeline is completely finished to return
+        a
+        result.
+        <h5>Response example</h5>
+        <pre class="response">
+          <code class="language-javascript">
+            {
+              pipelineid: '6ecd8c99-4036-403d-bf84-cf8400f67836',
+              duration: 823,
+              files: [
+                {
+                  name: 'compress_1',
+                  id: '40e6215d-b5c6-4896-987c-f30f3678f608',
+                  link: 'https://api.visualpdf.com/v1/download/40e6215d-b5c6-4896-987c-f30f3678f608',
+                },
+              ],
+              status: 'succeeded',
+              started: '2024-05-29T16:08:43.511Z',
+            }
+          </code>
+        </pre>
+      </li>
+      <li>
+        <span class="inline-code">async</span>: the request will return a result as soon as the pipeline has started.
+        <span class="inline-code">webhook-url</span> will be called when the pipeline is completed, with a body in the
+        format of a <span class="inline-code">wait</span> mode response.
+        <h5>Response example</h5>
+        <pre class="response">
+          <code class="language-javascript">
+            {
+              pipelineid: '6ecd8c99-4036-403d-bf84-cf8400f67836',
+              'webhook-url': 'https://your-domain.com/visual-pdf-webhook',
+              status: 'running',
+              started: '2024-05-29T16:08:43.511Z',
+            }
+          </code>
+        </pre>
+      </li>
+    </ul>
+  </div>
+
+  <h2>Errors</h2>
+  <vue-parameters-table :cols="['HTTP code', 'Description']">
+    <!-- Download format -->
+    <tr>
+      <td>400 - Bad Request</td>
+      <td>The request was unacceptable, often due to missing or incompatible parameters or tasks.</td>
+    </tr>
+    <tr>
+      <td>401 - Unauthorized</td>
+      <td>No valid API key provided.</td>
+    </tr>
+    <tr>
+      <td>403 - Forbidden</td>
+      <td>The API key doesn't have permissions to perform the request, often due to insufficient number of credits.</td>
+    </tr>
+    <tr>
+      <td>429 - Too Many Requests</td>
+      <td>Too many requests hit the API too quickly.</td>
+    </tr>
+    <tr>
+      <td>5xx - Server Errors</td>
+      <td>Something went wrong on our end.</td>
+    </tr>
+  </vue-parameters-table>
 </template>
 
 <script lang="ts">

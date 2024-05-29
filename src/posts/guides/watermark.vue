@@ -19,7 +19,7 @@
       // Creating the form data for the pipeline
       const form = new FormData();
 
-      // Adding the PDF to add the signature to
+      // Adding the PDF to add the watermark to
       form.append('file-1', myFile);
 
       // Adding the watermark image (my company logo)
@@ -35,9 +35,8 @@
               watermarks: [
                 {
                   // Inserting the watermark at the middle of the pages
-                  position: [50w, 50h],
-                  // The watermark will be contained in a rectangle with a width of 150 and height of 100
-                  'bouding-box': [150, 100],
+                  // with a maximum width of 150 and maximum height of 100
+                  box: [50w, 50h, 150, 100],
                   // Indicate which file is to be used for watermark
                   file: 'company-logo',
                   pages: ['all'],
@@ -66,8 +65,7 @@
       options: {
         watermarks: [
           {
-            position: [50w, 50h],
-            'bouding-box': [100w, 100w],
+            box: [50w, 50h, 100w, 100w],
             // Adding a red "confidential" watermark
             text: 'confidential',
             color: '#ff0000',
@@ -94,32 +92,30 @@
       // Creating the form data for the pipeline
       const form = new FormData();
 
-      // Adding the PDF to add the signature to
+      // Adding the PDF to add the watermarks to
       form.append('file-1', myFile);
 
       // Adding the watermark image (my company logo)
       form.append('company-logo', companyLogo);
 
-      // Inserting the signature on the PDF
+      // Inserting the watermarks on the PDF
       form.append(
         'tasks',
         [
           {
-            tool: 'sign',
+            tool: 'watermark',
             options: {
               watermarks: [
                 {
                   // Inserting the watermark at the middle of the pages
-                  position: [50w, 50h],
-                  // The watermark will be contained in a rectangle with a width of 150 and height of 100
-                  'bouding-box': [150, 100],
+                  // with a maximum width of 150 and maximum height of 100
+                  box: [50w, 50h, 150, 100],
                   // Indicate which file is to be used for watermark
                   file: 'company-logo',
                   pages: ['all'],
                 },
                 {
-                  position: [50w, 50h],
-                  'bouding-box': [100w, 100w],
+                  box: [50w, 50h, 100w, 100w],
                   // Adding a red "confidential" watermark
                   text: 'confidential',
                   color: '#ff0000',
@@ -149,35 +145,20 @@
     Let's go through the list of these options and the possible values for each of them.
   </p>
 
-  <h3>Position</h3>
-  <p>
-    This is the position of the center of the watermark.
-  </p>
-  <p>
-    It is represented by an array in the format <span class="inline-code">[x, y]</span> and can be expressed in relative
-    or absolute values:
-  </p>
-  <ul>
-    <li>
-      <b>absolute</b>: the values indicated correspond to the coordinates on the page, knowing that the origin is the
-      bottom left of the page
-    </li>
-
-    <li>
-      <b>relative</b>: the values shown represent a percentage of the width or height of the page (ex: <span
-        class="inline-code">50h</span> for 50% of the page height)
-    </li>
-  </ul>
-
-  <h3>Bouding box</h3>
+  <h3>Box</h3>
   <p>
     This is a rectangle in which the watermark will be included. It will not be visible on the PDF, but allows you to
-    indicate the maximum width and height of the watermark. Depending on the shape of the watermark, it will occupy the
-    entire width or the entire height of this rectangle.
+    indicate the position, maximum width and maximum height of the watermark. Depending on the shape of the watermark,
+    it will occupy the entire width or the entire height of this rectangle.
   </p>
   <p>
-    It is represented by an array in the format <span class="inline-code">[width, height]</span> and can be expressed,
-    as the position, in relative or absolute values.
+    It is represented by an array in the format <span class="inline-code">[x, y, width, height]</span> and can be
+    expressed in <router-link :to="{ name: 'guides-coordinates-sizes' }">relative or absolute values</router-link>.
+  </p>
+  <p>
+    The <span class="inline-code">x</span> and <span class="inline-code">y</span> parameters represent the coordinates
+    of the <b>center of the box</b>. This way, if you rotate the watermark, this coordinate will always be the center of
+    the watermark.
   </p>
 
   <h3>Opacity</h3>
@@ -193,13 +174,15 @@
   <p>
     This parameter allows you to rotate a watermark, with the angle of your choice, expressed in degrees.
   </p>
+  <p>
+    The origin of the rotation is the center of the watermark.
+  </p>
   <pre>
     <code class="language-javascript">
       options: {
         watermarks: [
           {
-            position: [10, 10],
-            'bouding-box': [200, 100],
+            box: [10, 10, 200, 100],
             file: 'company-logo',
             pages: ['last'],
             // Rotate the watermark 90 degrees
