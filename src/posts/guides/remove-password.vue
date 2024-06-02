@@ -37,13 +37,15 @@
 </template>
 
 <script lang="ts">
+import { createMetaMixin } from 'quasar';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'RemovePasswordGuidePost',
-  components: {},
-  data() {
-    return {};
-  },
+  mixins: [createMetaMixin(() => ({
+    title: 'Visual PDF API guides - How to remove PDF password',
+    description: 'Learn from this guide how you can integrate the Visual PDF API to remove password protection from a PDF file.',
+    equiv: { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
+  }))],
 });
 </script>

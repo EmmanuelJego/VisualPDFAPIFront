@@ -45,3 +45,5 @@ icons:
       - regular
   - play:
       - solid
+  - envelope:
+      - regular

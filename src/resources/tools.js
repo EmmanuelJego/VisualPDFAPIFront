@@ -17,7 +17,7 @@ export default [
   {
     id: 'rotate-pages',
     name: 'Rotate pages',
-    description: 'Change the orientatio of PDF pages',
+    description: 'Change the orientation of PDF pages',
     icon: 'rotate.svg',
     cateogry: 'edit',
   },

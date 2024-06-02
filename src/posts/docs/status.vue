@@ -62,6 +62,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { createMetaMixin } from 'quasar';
 
 import vueParametersTable from '../../components/docs/vue-parameters-table.vue';
 
@@ -70,8 +71,10 @@ export default defineComponent({
   components: {
     vueParametersTable,
   },
-  data() {
-    return {};
-  },
+  mixins: [createMetaMixin(() => ({
+    title: 'Visual PDF API docs - Service status',
+    description: 'Retrieves the service status. Also allows you to test your authentication.',
+    equiv: { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
+  }))],
 });
 </script>

@@ -95,13 +95,15 @@
 </template>
 
 <script lang="ts">
+import { createMetaMixin } from 'quasar';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'OrderGuidePost',
-  components: {},
-  data() {
-    return {};
-  },
+  mixins: [createMetaMixin(() => ({
+    title: 'Visual PDF API guides - How to change the order of PDF pages',
+    description: 'In this guide, learn how you can use the PDF page move tool to reorder your PDFs with a simple REST API.',
+    equiv: { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
+  }))],
 });
 </script>

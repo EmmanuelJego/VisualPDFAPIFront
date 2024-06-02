@@ -22,7 +22,7 @@ export default [
   {
     name: 'Tool guides',
     items: [
-      ...tools.map((tool) => ({
+      ...tools.sort((a, b) => ((a.id && b.id && a.id > b.id) ? 1 : -1)).map((tool) => ({
         slug: tool.id,
         name: tool.name,
       })),

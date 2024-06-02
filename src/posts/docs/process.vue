@@ -93,7 +93,8 @@
     <!-- Tool -->
     <tr>
       <td>tool</td>
-      <td>The identifier of a file processing tool, among those available.</td>
+      <td>The identifier of a file processing tool, among <a href="/docs/process#available-tools">those available</a>.
+      </td>
       <td>String</td>
       <td>Yes</td>
     </tr>
@@ -681,7 +682,7 @@
         <td>font</td>
         <td>The font of the text, among <router-link :to="{ name: 'guides-fonts' }">those available</router-link>. Only
           useful when using the <span class="inline-code">text</span> option.</td>
-        <td>String</td>
+        <td>String (<router-link :to="{ name: 'guides-fonts' }">font value</router-link>)</td>
         <td><span class="inline-code">special-elite</span></td>
         <td>No</td>
         <td><span class="inline-code">libre-baskerville</span></td>
@@ -832,7 +833,7 @@
         <td>font</td>
         <td>The font of the text, among <router-link :to="{ name: 'guides-fonts' }">those available</router-link>. Only
           useful when using the <span class="inline-code">text</span> option.</td>
-        <td>String</td>
+        <td>String (<router-link :to="{ name: 'guides-fonts' }">font value</router-link>)</td>
         <td><span class="inline-code">special-elite</span></td>
         <td>No</td>
         <td><span class="inline-code">libre-baskerville</span></td>
@@ -1005,7 +1006,7 @@
     </ul>
   </div>
 
-  <h2>Errors</h2>
+  <h2 id="errors">Errors</h2>
   <vue-parameters-table :cols="['HTTP code', 'Description']">
     <!-- Download format -->
     <tr>
@@ -1033,6 +1034,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { createMetaMixin } from 'quasar';
 
 import tools from 'src/resources/tools.js';
 import { CompressionLevel, getCompressionLevelInfo } from 'src/types/compressionLevel';
@@ -1045,6 +1047,11 @@ export default defineComponent({
   components: {
     vueParametersTable,
   },
+  mixins: [createMetaMixin(() => ({
+    title: 'Visual PDF API docs - Process a pipeline',
+    description: 'Process a pipeline by uploading files and executing the given tasks. To send files to process as well as the tasks to be performed on these files, you must send the content in multipart/form-data format.',
+    equiv: { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
+  }))],
   data() {
     return {
       tools: tools.sort((a: Feature, b: Feature) => ((a.id && b.id && a.id > b.id) ? 1 : -1)),

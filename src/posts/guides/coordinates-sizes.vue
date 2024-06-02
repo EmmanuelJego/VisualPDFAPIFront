@@ -143,13 +143,15 @@
 </template>
 
 <script lang="ts">
+import { createMetaMixin } from 'quasar';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'CoordinatesSizesGuidePost',
-  components: {},
-  data() {
-    return {};
-  },
+  mixins: [createMetaMixin(() => ({
+    title: 'Visual PDF API guide - Coordinates and sizes',
+    description: 'To use certain API functionality, you will be asked to indicate coordinates (for example for adding a signature) or sizes (adding margins when turning images to PDF).',
+    equiv: { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
+  }))],
 });
 </script>

@@ -81,44 +81,6 @@
   }
 }
 
-.main-cta {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden;
-
-  & > * {
-    max-width: 800px;
-  }
-
-  .cta-button-container {
-    position: relative;
-
-    &::before, &::after {
-      content: '';
-      width: 590px;
-      height: 370px;
-      top: calc(50% - 4px);
-      background-position: bottom;
-      background-repeat: no-repeat;
-      position: absolute;
-    }
-
-    &::before {
-      background: url(../../assets/img/home/dot-lines.svg);
-      left: 0;
-      transform: translate(-100%, -50%);
-    }
-
-    &::after {
-      background: url(../../assets/img/home/dot-lines.svg);
-      right: 0;
-      transform: translate(100%, -50%) scaleX(-1);
-    }
-  }
-}
-
 .section-header {
   display: flex;
   flex-direction: column;

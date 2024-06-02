@@ -33,6 +33,12 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/MainLayout.vue'),
     children: [{ path: '', name: 'features', component: () => import('pages/Features.vue') }],
   },
+  // Use cases
+  {
+    path: '/use-cases',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [{ path: '', name: 'use-cases', component: () => import('pages/UseCases.vue') }],
+  },
   // Pricing
   {
     path: '/pricing',
@@ -64,6 +70,19 @@ const routes: RouteRecordRaw[] = [
         children: buildPostsRoutes('docs', docsRoutes),
       },
     ],
+  },
+
+  // Privacy policy
+  {
+    path: '/privacy-policy',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [{ path: '', name: 'privacy', component: () => import('pages/Privacy.vue') }],
+  },
+  // Terms and conditions
+  {
+    path: '/terms-and-conditions',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [{ path: '', name: 'terms', component: () => import('pages/Terms.vue') }],
   },
 
   // Always leave this as last one,

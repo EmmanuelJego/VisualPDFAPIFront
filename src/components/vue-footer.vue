@@ -17,9 +17,11 @@
               </div>
               <div class="flex column">
                 <router-link to="features" class="no-text-decoration">Features</router-link>
+                <router-link to="guides" class="no-text-decoration">Use cases</router-link>
                 <router-link to="guides" class="no-text-decoration">Guides</router-link>
                 <router-link to="docs" class="no-text-decoration">Documentation</router-link>
                 <router-link to="pricing" class="no-text-decoration">Pricing</router-link>
+                <a href="https://visualpdf.com" target="_blank" class="no-text-decoration">Web app</a>
               </div>
             </div>
             <div>
@@ -27,12 +29,12 @@
                 Legal
               </div>
               <div class="flex column">
-                <router-link to="features" class="no-text-decoration">Privacy</router-link>
-                <router-link to="guides" class="no-text-decoration">Terms</router-link>
+                <router-link to="privacy-policy" class="no-text-decoration">Privacy</router-link>
+                <router-link to="terms-and-conditions" class="no-text-decoration">Terms</router-link>
               </div>
             </div>
             <div>
-              <q-btn unelevated no-caps color="primary" label="Try for free" :ripple="false" />
+              <q-btn unelevated no-caps color="primary" label="Try for free" :ripple="false" @click="displayWIPModal" />
             </div>
           </div>
         </div>
@@ -59,6 +61,11 @@ export default defineComponent({
   },
   data() {
     return {};
+  },
+  methods: {
+    displayWIPModal() {
+      this.$bus.emit('display-wip-modal');
+    },
   },
 });
 </script>

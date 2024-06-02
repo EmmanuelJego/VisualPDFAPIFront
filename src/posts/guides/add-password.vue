@@ -45,13 +45,15 @@
 </template>
 
 <script lang="ts">
+import { createMetaMixin } from 'quasar';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'AddPasswordGuidePost',
-  components: {},
-  data() {
-    return {};
-  },
+  mixins: [createMetaMixin(() => ({
+    title: 'Visual PDF API guide - Learn how to add a password to PDFs',
+    description: 'With this guide, you will learn how the Visual PDF API allows you to protect a PDF by adding a password that will prevent anyone from accessing the document without having entered it.',
+    equiv: { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
+  }))],
 });
 </script>

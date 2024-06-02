@@ -57,6 +57,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { createMetaMixin } from 'quasar';
 
 import vueParametersTable from '../../components/docs/vue-parameters-table.vue';
 
@@ -65,8 +66,10 @@ export default defineComponent({
   components: {
     vueParametersTable,
   },
-  data() {
-    return {};
-  },
+  mixins: [createMetaMixin(() => ({
+    title: 'Visual PDF API docs - Get quota data',
+    description: 'Retrieves the amount of credits you currently have for your subscription plan and prepaid packages.',
+    equiv: { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
+  }))],
 });
 </script>

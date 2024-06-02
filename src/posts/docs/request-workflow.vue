@@ -48,13 +48,15 @@
 </template>
 
 <script lang="ts">
+import { createMetaMixin } from 'quasar';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'RequestWorkflowDocsPost',
-  components: {},
-  data() {
-    return {};
-  },
+  mixins: [createMetaMixin(() => ({
+    title: 'Visual PDF API docs - Request workflow',
+    description: 'File processing on the Visual PDF API is broken down into 2 main steps: execution of a pipeline and downloading of the files resulting from this processing.',
+    equiv: { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
+  }))],
 });
 </script>

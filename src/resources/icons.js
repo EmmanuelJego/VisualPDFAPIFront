@@ -19,6 +19,7 @@ const regularIcons = {
   shieldLock: 'fa-shield-keyhole',
   questionCircle: 'fa-circle-question',
   download: 'fa-download',
+  mail: 'fa-envelope',
 };
 
 Object.keys(regularIcons).forEach((key) => {

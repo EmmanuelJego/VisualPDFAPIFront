@@ -10,8 +10,8 @@
         Visual PDF's features as a REST API, and even more.
       </div>
       <div class="row q-gutter-lg justify-center">
-        <q-btn unelevated no-caps color="primary" label="Documentation" :ripple="false" class="text-subtitle2"
-          to="/docs" />
+        <q-btn unelevated no-caps color="primary" label="Get started" :ripple="false" class="text-subtitle2"
+          to="/guides" />
         <q-btn unelevated no-caps color="secondary" label="Features" :ripple="false" class="q-px-lg text-subtitle2"
           to="/features" />
       </div>
@@ -106,20 +106,7 @@
     </div>
 
     <!-- CTA -->
-    <div class="cta-section main-cta">
-      <h2 class="text-h2 text-white text-bold">
-        It takes less than 5 minutes to start automating your PDFs
-      </h2>
-      <div class="text-h5 q-my-xl">
-        Start with <span class="bg-white text-primary q-px-xs">200 free credits</span>
-      </div>
-      <div class="cta-button-container">
-        <q-btn unelevated no-caps color="secondary" label="Get started" :ripple="false" class="text-subtitle2" />
-      </div>
-      <div class="text-caption q-mt-xs">
-        No credit card required
-      </div>
-    </div>
+    <vue-main-cta />
 
     <div class="page-content">
       <!-- Advantages section -->
@@ -195,7 +182,8 @@
           <div class="text-muted">
             No credit card required
           </div>
-          <q-btn unelevated no-caps color="primary" label="Sign up" :ripple="false" class="text-subtitle2 q-mt-md" />
+          <q-btn unelevated no-caps color="primary" label="Sign up" :ripple="false" class="text-subtitle2 q-mt-md"
+            @click="displayWIPModal" />
         </div>
       </section>
 
@@ -258,18 +246,31 @@
 </template>
 
 <script lang="ts">
+import { createMetaMixin } from 'quasar';
 import { defineComponent } from 'vue';
 
 import '../css/pages/index.scss';
 import icons from '../resources/icons.js';
 
 import vueFaq from '../components/vue-faq.vue';
+import vueMainCta from '../components/vue-main-cta.vue';
 
 export default defineComponent({
   name: 'IndexPage',
   components: {
     vueFaq,
+    vueMainCta,
   },
+  mixins: [
+    createMetaMixin(() => ({
+      title: 'Visual PDF API - Automate PDF creation, edition, conversion',
+      description: 'A simple PDF processing REST API for all your document creation, editing and conversion projects. Powerful and scalable PDF tools for automation.',
+      equiv: {
+        'http-equiv': 'Content-Type',
+        content: 'text/html; charset=UTF-8',
+      },
+    })),
+  ],
   data() {
     return {
       icons,
@@ -383,6 +384,9 @@ export default defineComponent({
       this.activeAnalyticsTimeout = window.setTimeout(() => {
         this.setActiveAnalyticsStep((this.activeAnalyticsStepIndex + 1) % this.analyticsSteps.length);
       }, 10000);
+    },
+    displayWIPModal() {
+      this.$bus.emit('display-wip-modal');
     },
   },
 });

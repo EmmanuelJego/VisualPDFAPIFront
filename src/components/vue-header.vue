@@ -8,12 +8,18 @@
       <q-separator vertical inset class="desktop-only-item" />
 
       <router-link to="/features" class="desktop-only-item">Features</router-link>
+      <router-link to="/use-cases" class="desktop-only-item">Use cases</router-link>
+      <router-link to="/pricing" class="desktop-only-item">Pricing</router-link>
       <router-link to="/guides" class="desktop-only-item">Guides</router-link>
       <router-link to="/docs" class="desktop-only-item">API reference</router-link>
-      <router-link to="/pricing" class="desktop-only-item">Pricing</router-link>
 
-      <router-link class="q-ml-auto desktop-only-item" to="login">Login</router-link>
-      <q-btn unelevated no-caps color="primary" label="Try for free" :ripple="false" class="desktop-only-item" />
+      <div class="q-ml-auto">
+        <q-btn unelevated no-caps flat color="dark" label="Login" :ripple="false" class="q-mr-sm desktop-only-item"
+          @click="displayWIPModal" />
+        <q-btn unelevated no-caps color="primary" label="Try for free" :ripple="false" class="desktop-only-item"
+          @click="displayWIPModal" />
+      </div>
+      <!-- <router-link class="q-ml-auto desktop-only-item" to="login">Login</router-link> -->
 
       <vue-menu-dropdown class="q-ml-auto mobile-only-item" mobile :id="'mobile-menu-dropdown'">
         <template v-slot:title>
@@ -59,6 +65,11 @@ export default defineComponent({
     return {
       icons,
     };
+  },
+  methods: {
+    displayWIPModal() {
+      this.$bus.emit('display-wip-modal');
+    },
   },
 });
 </script>

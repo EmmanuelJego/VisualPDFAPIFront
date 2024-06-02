@@ -48,9 +48,9 @@ $menu-top: $header-height + 1px;
     .side-menu-mobile-toggle {
       display: block;
       position: fixed;
-      margin-left: $menu-width - ($spacing-md / 2);
+      margin-left: $menu-width - calc($spacing-md / 2);
       transition: $transition-duration;
-      bottom: $spacing-md / 2;
+      bottom: calc($spacing-md / 2);
     }
 
     &.mobile-hidden {

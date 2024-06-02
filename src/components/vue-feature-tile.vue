@@ -16,7 +16,7 @@
         <div v-if="feature.link1 || feature.link2" class="flex q-gutter-x-md q-gutter-y-sm q-mt-xs">
           <q-btn v-for="(link, linkIndex) in [feature.link1, feature.link2].filter((link) => link)"
             :key="`link-${linkIndex}`" unelevated no-caps color="secondary" :ripple="false"
-            :to="{ name: link?.target }">
+            :to="{ name: link?.target, hash: `#${link?.hash}` ?? '' }">
             <div class="flex q-gutter-x-sm items-center">
               <span>{{ link?.text }}</span>
               <span :class="link?.icon || icons.arrowRight" />

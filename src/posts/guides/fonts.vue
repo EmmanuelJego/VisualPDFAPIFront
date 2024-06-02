@@ -34,11 +34,17 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { createMetaMixin } from 'quasar';
+
 import fonts from 'src/resources/fonts.js';
 
 export default defineComponent({
   name: 'FontsGuidePost',
-  components: {},
+  mixins: [createMetaMixin(() => ({
+    title: 'Visual PDF API guide - Fonts',
+    description: 'Tools such as adding a signature or adding a watermark allow you to personalize the text content by choosing a font. Find in this guide the different fonts currently taken into account by the API.',
+    equiv: { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
+  }))],
   data() {
     return {
       fonts,

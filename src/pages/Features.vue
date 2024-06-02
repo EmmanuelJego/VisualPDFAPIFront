@@ -1,10 +1,15 @@
 <template>
   <q-page class="flex justify-center">
-    <div class="page-content">
-      <div class="flex justify-center q-my-xl q-py-xl">
-        <h1 class="text-center sm-page-content">
+    <div class="page-content q-mb-xl q-pb-xl">
+      <div class="flex justify-center q-my-xl q-py-xl text-center">
+        <h1 class="sm-page-content">
           <span class="text-primary">Automate any PDF task</span> with our large toolkit
         </h1>
+        <div class="text-muted text-subtitle1 q-mt-xl sm-page-content">
+          <p>
+            Powerful PDF tools that you can combine, with infinite possibilities.
+          </p>
+        </div>
       </div>
 
       <div v-for="(cat, catIndex) in featuresCategories" :key="`cat-${catIndex}`"
@@ -23,22 +28,37 @@
         <q-btn unelevated flat no-caps color="primary" label="Let us know" class="link-btn" />
       </div>
     </div>
+
+    <vue-main-cta />
   </q-page>
 </template>
 
 <script lang="ts">
+import { createMetaMixin } from 'quasar';
 import { defineComponent } from 'vue';
 
 import icons from '../resources/icons.js';
 import tools from '../resources/tools.js';
 
 import vueFeatureTile from '../components/vue-feature-tile.vue';
+import vueMainCta from '../components/vue-main-cta.vue';
 
 export default defineComponent({
   name: 'FeaturesPage',
   components: {
     vueFeatureTile,
+    vueMainCta,
   },
+  mixins: [
+    createMetaMixin(() => ({
+      title: 'PDF tools as REST API - Visual PDF API file processing features',
+      description: 'All our PDF processing features are easily integrated into your solution, whether it is a personal project or a large-scale project.',
+      equiv: {
+        'http-equiv': 'Content-Type',
+        content: 'text/html; charset=UTF-8',
+      },
+    })),
+  ],
   data() {
     return {
       icons,
@@ -70,7 +90,6 @@ export default defineComponent({
     },
     buildFeatureLinks(toolid: string) {
       const getGuideName = () => `guides-${toolid}`;
-      const getDocsName = () => `docs-${toolid}`;
 
       return {
         link1: {
@@ -78,7 +97,8 @@ export default defineComponent({
           text: 'Guide',
         },
         link2: {
-          target: this.$router.hasRoute(getDocsName()) ? getDocsName() : 'docs',
+          target: 'docs-process',
+          hash: toolid,
           text: 'API docs',
         },
       };

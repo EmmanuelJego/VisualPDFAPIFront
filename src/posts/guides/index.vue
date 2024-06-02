@@ -70,6 +70,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { createMetaMixin } from 'quasar';
 
 import icons from 'src/resources/icons.js';
 import guidesCategories from 'src/posts/guides/index.js';
@@ -84,6 +85,11 @@ export default defineComponent({
   components: {
     vueFeatureTile,
   },
+  mixins: [createMetaMixin(() => ({
+    title: 'Visual PDF API guides - PDF tools for developers and creators',
+    description: 'The Visual PDF API guides allow you to understand how our API works to process your PDF files and all its capabilities, through examples and explanations.',
+    equiv: { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
+  }))],
   data() {
     return {
       firstStepsCards: [

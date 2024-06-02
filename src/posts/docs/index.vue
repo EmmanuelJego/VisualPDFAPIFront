@@ -57,12 +57,18 @@ import icons from 'src/resources/icons.js';
 import docsCategories from 'src/posts/docs/index.js';
 
 import vueFeatureTile from 'src/components/vue-feature-tile.vue';
+import { createMetaMixin } from 'quasar';
 
 export default defineComponent({
   name: 'HomeDocsPost',
   components: {
     vueFeatureTile,
   },
+  mixins: [createMetaMixin(() => ({
+    title: 'Visual PDF API - API reference for developers and creators',
+    description: 'Visual PDF API documentation to process PDF files easily. Complete documentation of resources and parameters to integrate our features into your solution.',
+    equiv: { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
+  }))],
   data() {
     return {
       getStartedCards: [

@@ -204,13 +204,15 @@
 </template>
 
 <script lang="ts">
+import { createMetaMixin } from 'quasar';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'AddWatermarkGuidePost',
-  components: {},
-  data() {
-    return {};
-  },
+  mixins: [createMetaMixin(() => ({
+    title: 'Visual PDF API guides - How to add PDF watermark',
+    description: 'Integrate the Visual PDF API into your solution to easily add a watermark to your PDFs. Follow this guide to learn how to use this tool and integrate it in just a few minutes.',
+    equiv: { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
+  }))],
 });
 </script>

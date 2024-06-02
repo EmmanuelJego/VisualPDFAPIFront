@@ -126,13 +126,15 @@
 </template>
 
 <script lang="ts">
+import { createMetaMixin } from 'quasar';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'CreditsBillingGuidePost',
-  components: {},
-  data() {
-    return {};
-  },
+  mixins: [createMetaMixin(() => ({
+    title: 'Visual PDF API guide - Credits and billing',
+    description: 'To be able to process files through the API, you must first obtain credits. We will see in this guide that credits can be obtained in different ways. We will also see what a credit is and what happens if your account runs out of credit.',
+    equiv: { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
+  }))],
 });
 </script>

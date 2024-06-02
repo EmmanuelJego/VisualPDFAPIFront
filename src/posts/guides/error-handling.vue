@@ -52,16 +52,22 @@
       }
     </code>
   </pre>
+  <p>
+    You will find in the <router-link :to="{ name: 'docs-process', hash: '#errors' }">API documentation</router-link>
+    the different errors that you can obtain as well as their meaning.
+  </p>
 </template>
 
 <script lang="ts">
+import { createMetaMixin } from 'quasar';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'ErrorHandlingGuidePost',
-  components: {},
-  data() {
-    return {};
-  },
+  mixins: [createMetaMixin(() => ({
+    title: 'Visual PDF API guide - Error handling',
+    description: 'Any request made to the Visual PDF API can return an error for any reason: authentication problem, non-compliant pipeline, error processing a file, etc.',
+    equiv: { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
+  }))],
 });
 </script>

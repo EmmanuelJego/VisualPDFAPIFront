@@ -95,6 +95,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { createMetaMixin } from 'quasar';
 
 import vueParametersTable from '../../components/docs/vue-parameters-table.vue';
 
@@ -103,8 +104,10 @@ export default defineComponent({
   components: {
     vueParametersTable,
   },
-  data() {
-    return {};
-  },
+  mixins: [createMetaMixin(() => ({
+    title: 'Visual PDF API docs - Get pipeline status',
+    description: 'Retrieves the status of a pipeline from its id.',
+    equiv: { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
+  }))],
 });
 </script>

@@ -1,5 +1,6 @@
 interface FeatureLink {
   target: string;
+  hash?: string;
   text: string;
   icon?: string;
 }

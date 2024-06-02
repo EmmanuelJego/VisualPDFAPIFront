@@ -47,12 +47,17 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { createMetaMixin } from 'quasar';
 
 import { CompressionLevel, getCompressionLevelInfo } from 'src/types/compressionLevel';
 
 export default defineComponent({
   name: 'CompressGuidePost',
-  components: {},
+  mixins: [createMetaMixin(() => ({
+    title: 'Visual PDF API guide - Reduce PDF size with a REST API',
+    description: 'Compressing a PDF allows you to reduce its size. Find out how to compress PDF easily from the Visual PDF REST API.',
+    equiv: { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
+  }))],
   data() {
     return {
       CompressionLevel,

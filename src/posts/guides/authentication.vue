@@ -74,13 +74,15 @@
 </template>
 
 <script lang="ts">
+import { createMetaMixin } from 'quasar';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'AuthenticationGuidePost',
-  components: {},
-  data() {
-    return {};
-  },
+  mixins: [createMetaMixin(() => ({
+    title: 'Visual PDF API guide - Authenticate to the API easily',
+    description: 'The Visual PDF API is only accessible to registered users. To prove that you are a user with a valid account, and who has credits, an authentication process is necessary for each call to the API.',
+    equiv: { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
+  }))],
 });
 </script>

@@ -61,8 +61,8 @@
               </div>
             </div>
             <div class="q-mt-sm">
-              <q-btn unelevated no-caps color="primary" label="Subscribe" :ripple="false"
-                class="text-subtitle2 q-px-xl" />
+              <q-btn unelevated no-caps color="primary" label="Subscribe" :ripple="false" class="text-subtitle2 q-px-xl"
+                @click="displayWIPModal" />
             </div>
           </div>
 
@@ -86,8 +86,8 @@
               </div>
             </div>
             <div class="q-mt-sm">
-              <q-btn unelevated no-caps color="primary" label="Checkout" :ripple="false"
-                class="text-subtitle2 q-px-xl" />
+              <q-btn unelevated no-caps color="primary" label="Checkout" :ripple="false" class="text-subtitle2 q-px-xl"
+                @click="displayWIPModal" />
             </div>
           </div>
         </div>
@@ -102,7 +102,8 @@
           <br>
           No credit card required.
         </div>
-        <q-btn unelevated no-caps color="primary" label="Sign up" :ripple="false" class="text-subtitle2 q-mt-md" />
+        <q-btn unelevated no-caps color="primary" label="Sign up" :ripple="false" class="text-subtitle2 q-mt-md"
+          @click="displayWIPModal" />
       </div>
 
       <!-- Features -->
@@ -136,6 +137,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { createMetaMixin } from 'quasar';
 
 import vueFeatureTile from 'src/components/vue-feature-tile.vue';
 import vueFaq from 'src/components/vue-faq.vue';
@@ -163,6 +165,16 @@ export default defineComponent({
     vueFaq,
     vueHelpTooltip,
   },
+  mixins: [
+    createMetaMixin(() => ({
+      title: 'Visual PDF API pricing - Plans tailored to your project',
+      description: 'Subscription plans and prepaid packages of all sizes to fit your PDF processing solutions needs, at the right price.',
+      equiv: {
+        'http-equiv': 'Content-Type',
+        content: 'text/html; charset=UTF-8',
+      },
+    })),
+  ],
   data() {
     return {
       icons,
@@ -226,6 +238,10 @@ export default defineComponent({
           answer: 'Yes. We rely on Stripe services to process payments.\nStripe is a widely used payment platform. It implements very strong security protocols and is certified PCI DSS, ISO 27001, HIPAA, GDPR compliant, and more. <a href="https://docs.stripe.com/security" target="_blank">Learn more</a>.',
         },
         {
+          question: 'Do prices include VAT?',
+          answer: 'No. The prices displayed here are excluding taxes. Taxes will be added at checkout, depending on your country. This way we ensure we charge the right price.',
+        },
+        {
           question: 'Can I cancel my subscription anytime?',
           answer: 'Yes. You can cancel your subscription in your account settings anymtime. You will then not be charged again for the subscription. Note that any renewal of subscription already paid cannot be refunded.',
         },
@@ -275,6 +291,9 @@ export default defineComponent({
   methods: {
     stringifyCost(cost: number) {
       return `$${cost.toLocaleString('en-US')}`;
+    },
+    displayWIPModal() {
+      this.$bus.emit('display-wip-modal');
     },
   },
 });

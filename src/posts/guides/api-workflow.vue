@@ -151,13 +151,15 @@
 </template>
 
 <script lang="ts">
+import { createMetaMixin } from 'quasar';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'ApiWorkflowGuidePost',
-  components: {},
-  data() {
-    return {};
-  },
+  mixins: [createMetaMixin(() => ({
+    title: 'Visual PDF API guide - Learn how to manipulate the REST API',
+    description: 'This guide will allow you to understand how to interact with the Visual PDF API through 3 simple steps: creating a file processing pipeline, executing the pipeline, downloading files.',
+    equiv: { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
+  }))],
 });
 </script>
