@@ -34,6 +34,8 @@ module.exports = configure((ctx) => ({
   // https://v2.quasar.dev/quasar-cli-webpack/boot-files
   boot: [
     'bus',
+    'axios',
+    'plausible',
   ],
 
   // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-css
@@ -99,7 +101,7 @@ module.exports = configure((ctx) => ({
     server: {
       type: 'http',
     },
-    port: 8080,
+    port: 8000,
     open: true, // opens browser window automatically
   },
 

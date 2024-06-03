@@ -1,16 +1,16 @@
 <template>
   <q-dialog ref="dialog" @hide="onDialogHide" transition-show="jump-down" transition-hide="jump-down">
     <q-card class="q-pa-lg rounded-borders-lg">
-      <template v-if="!sent">
+      <template v-if="!sent && !moreSent">
         <h2>
           Join the waiting list and get <span class="text-primary">1000 free credits</span>
         </h2>
         <div class="q-my-lg text-muted">
-          Thank you for choosing Visual PDF and joining the adventure!
-        </div>
-        <div class="q-my-lg text-muted">
           Before giving access to our API to creators and developers, we want to confirm a real interest from the public
           towards it.
+        </div>
+        <div class="q-my-lg text-muted">
+          Let us know your interest by joining the waiting list in exchange for 1000 free credits.
         </div>
         <div>
           <q-input ref="mail-input" filled v-model="email" type="email" placeholder="Your email address" autofocus>
@@ -25,14 +25,34 @@
           Your email will only be used to inform you of the progress of the project.
         </div>
       </template>
-      <template v-else>
+      <template v-else-if="!moreSent">
         <h2>
           Thank you for joining the waiting list!
         </h2>
+        <div class="q-my-lg text-muted">
+          When the service is available, you will get 1000 credits upon creating your account.
+        </div>
+        <div class="q-my-lg text-muted">
+          Can you tell us more about your project and what you want to do with the Visual PDF API?
+        </div>
+        <q-input ref="mail-input" filled v-model="info" type="textarea"
+          placeholder="Information about your project, what you need, amount of files to process..." autofocus />
+        <q-btn color="primary" class="q-mt-sm full-width text-subtitle1" unelevated no-caps label="Send"
+          @click="sendMore" />
+      </template>
+      <template v-else>
+        <h2>
+          Thank you for your trust and for sharing this information with us.
+        </h2>
         <div class="q-mt-lg text-muted">
-          We will keep you updated very soon.
+          We will take your comment into account to provide the best possible service and we will keep you informed very
+          soon.
         </div>
       </template>
+
+      <q-inner-loading :showing="loading">
+        <q-spinner-oval size="50px" color="primary" />
+      </q-inner-loading>
     </q-card>
   </q-dialog>
 </template>
@@ -43,13 +63,23 @@ import { defineComponent } from 'vue';
 
 import icons from 'src/resources/icons';
 
+interface RequestResponse {
+  data: {
+    id: string;
+  };
+}
+
 export default defineComponent({
   name: 'VueWipModal',
   data() {
     return {
       icons,
       email: '',
+      info: '',
       sent: false,
+      moreSent: false,
+      loading: false,
+      dbItemId: '',
     };
   },
   emits: ['ok', 'hide'],
@@ -59,20 +89,60 @@ export default defineComponent({
     },
   },
   methods: {
-    joinList() {
+    async joinList() {
       const input = this.$refs['mail-input'] as QInput;
 
-      if (this.email) {
+      if (this.email?.length) {
         const success = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.email);
+
         if (success) {
-          // TODO really save the email
-          this.sent = true;
+          try {
+            this.loading = true;
+
+            const formData = new FormData();
+            formData.append('email', this.email);
+            const requestResponse = await this.$api.post('/apiwaintinglist', formData) as RequestResponse;
+
+            this.dbItemId = requestResponse.data.id;
+            this.sent = true;
+          } catch (e) {
+            this.onError();
+          } finally {
+            this.loading = false;
+          }
         } else {
           input.focus();
         }
       } else {
         input.focus();
       }
+    },
+    async sendMore() {
+      if (this.info?.length) {
+        try {
+          this.loading = true;
+
+          const formData = new FormData();
+          formData.append('id', this.dbItemId);
+          formData.append('info', this.info);
+          await this.$api.put('/apiwaintinglist', formData);
+
+          this.moreSent = true;
+        } catch (e) {
+          this.onError();
+        } finally {
+          this.loading = false;
+        }
+      }
+    },
+    onError() {
+      this.$q.notify({
+        message: 'Sorry, something went wrong',
+        color: 'red',
+        badgeColor: 'white',
+        badgeTextColor: 'dark',
+        position: 'bottom-right',
+      });
     },
     // === Dialog related methods ===
     show() {
