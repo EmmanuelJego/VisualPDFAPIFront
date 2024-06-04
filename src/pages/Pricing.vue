@@ -62,7 +62,7 @@
             </div>
             <div class="q-mt-sm">
               <q-btn unelevated no-caps color="primary" label="Subscribe" :ripple="false" class="text-subtitle2 q-px-xl"
-                @click="displayWIPModal" />
+                @click="tryPurchase('subscription')" />
             </div>
           </div>
 
@@ -87,7 +87,7 @@
             </div>
             <div class="q-mt-sm">
               <q-btn unelevated no-caps color="primary" label="Checkout" :ripple="false" class="text-subtitle2 q-px-xl"
-                @click="displayWIPModal" />
+                @click="tryPurchase('prepaid package')" />
             </div>
           </div>
         </div>
@@ -144,6 +144,7 @@ import vueFaq from 'src/components/vue-faq.vue';
 import vueHelpTooltip from 'src/components/vue-help-tooltip.vue';
 
 import '../css/pages/pricing.scss';
+import plausibleEvents from 'src/resources/plausible-events';
 import icons from '../resources/icons.js';
 
 const plans = [1000, 2500, 5000, 10000, 25000, 50000, 100000, 250000, 500000, 1000000];
@@ -292,8 +293,19 @@ export default defineComponent({
     stringifyCost(cost: number) {
       return `$${cost.toLocaleString('en-US')}`;
     },
-    displayWIPModal() {
-      this.$bus.emit('display-wip-modal');
+    displayWIPModal(ref = 'sign up') {
+      this.$bus.emit('display-wip-modal', `pricing ${ref}`);
+    },
+    tryPurchase(type: string) {
+      this.displayWIPModal(type);
+
+      const plausibleProps: { [key: string]: string } = {};
+      plausibleProps[plausibleEvents.props.PURCHASE_AMOUNT] = this.steps[this.stepIndex];
+      plausibleProps[plausibleEvents.props.PURCHASE_TYPE] = type;
+      if (type === 'subscription') {
+        plausibleProps[plausibleEvents.props.PURCHASE_PERIOD] = this.subscriptionPeriod;
+      }
+      this.$plausible.event(plausibleEvents.events.TRY_PURCHASE, plausibleProps);
     },
   },
 });

@@ -15,9 +15,9 @@
 
       <div class="q-ml-auto">
         <q-btn unelevated no-caps flat color="dark" label="Login" :ripple="false" class="q-mr-sm desktop-only-item"
-          @click="displayWIPModal" />
+          @click="displayWIPModal('header login')" />
         <q-btn unelevated no-caps color="primary" label="Try for free" :ripple="false" class="desktop-only-item"
-          @click="displayWIPModal" />
+          @click="displayWIPModal('header try')" />
       </div>
       <!-- <router-link class="q-ml-auto desktop-only-item" to="login">Login</router-link> -->
 
@@ -28,8 +28,9 @@
         <template v-slot:dropdown-content>
           <div class="column q-gutter-y-md">
             <router-link to="/features" class="close-dropdown">Features</router-link>
+            <router-link to="/use-cases" class="close-dropdown">Use cases</router-link>
             <router-link to="/guides" class="close-dropdown">Guides</router-link>
-            <router-link to="/docs" class="close-dropdown">Documentation</router-link>
+            <router-link to="/docs" class="close-dropdown">API reference</router-link>
             <router-link to="/pricing" class="close-dropdown">Pricing</router-link>
 
             <q-separator />
@@ -67,8 +68,8 @@ export default defineComponent({
     };
   },
   methods: {
-    displayWIPModal() {
-      this.$bus.emit('display-wip-modal');
+    displayWIPModal(ref: string) {
+      this.$bus.emit('display-wip-modal', ref);
     },
   },
 });

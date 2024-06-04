@@ -27,7 +27,7 @@ export default defineComponent({
   },
   methods: {
     displayWIPModal() {
-      this.$bus.emit('display-wip-modal');
+      this.$bus.emit('display-wip-modal', 'cta');
     },
   },
 });

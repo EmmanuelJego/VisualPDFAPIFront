@@ -5,5 +5,4 @@
     "baseUrl": ".",
     "target": "esnext",
   },
-  // "moduleResolution": "node16",
 }

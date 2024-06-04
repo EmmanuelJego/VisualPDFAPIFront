@@ -1,7 +1,7 @@
 {
   "name": "visualpdfapifront",
-  "version": "1.0.0",
-  "description": "A Quasar Project",
+  "version": "1.0.1",
+  "description": "Visual PDF API website",
   "productName": "VisualPDFAPIfront",
   "author": "EmmanuelJego <contact@emmanueljego.fr>",
   "private": true,
@@ -17,7 +17,6 @@
     "core-js": "^3.31.1",
     "prismjs": "^1.29.0",
     "quasar": "^2.8.0",
-    "v-plausible": "^1.2.0",
     "vue": "^3.4.18",
     "vue-router": "^4.0.12",
     "vue-typed-mixins": "^0.2.0"

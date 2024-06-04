@@ -17,9 +17,9 @@
               </div>
               <div class="flex column">
                 <router-link to="features" class="no-text-decoration">Features</router-link>
-                <router-link to="guides" class="no-text-decoration">Use cases</router-link>
+                <router-link to="use-cases" class="no-text-decoration">Use cases</router-link>
                 <router-link to="guides" class="no-text-decoration">Guides</router-link>
-                <router-link to="docs" class="no-text-decoration">Documentation</router-link>
+                <router-link to="docs" class="no-text-decoration">API reference</router-link>
                 <router-link to="pricing" class="no-text-decoration">Pricing</router-link>
                 <a href="https://visualpdf.com" target="_blank" class="no-text-decoration">Web app</a>
               </div>
@@ -64,7 +64,7 @@ export default defineComponent({
   },
   methods: {
     displayWIPModal() {
-      this.$bus.emit('display-wip-modal');
+      this.$bus.emit('display-wip-modal', 'footer try');
     },
   },
 });
