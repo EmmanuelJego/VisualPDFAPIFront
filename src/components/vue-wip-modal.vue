@@ -101,7 +101,7 @@ export default defineComponent({
 
             const formData = new FormData();
             formData.append('email', this.email);
-            const requestResponse = await this.$api.post('/apiwaintinglist', formData) as RequestResponse;
+            const requestResponse = await this.$api.post('/devapi/waitinglist', formData) as RequestResponse;
 
             this.dbItemId = requestResponse.data.id;
             this.sent = true;
@@ -125,7 +125,7 @@ export default defineComponent({
           const formData = new FormData();
           formData.append('id', this.dbItemId);
           formData.append('info', this.info);
-          await this.$api.put('/apiwaintinglist', formData);
+          await this.$api.put('/devapi/waitinglist', formData);
 
           this.moreSent = true;
         } catch (e) {

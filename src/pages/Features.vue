@@ -25,7 +25,8 @@
 
       <div class="q-mt-xl q-pt-xl text-center flex items-baseline justify-center">
         Can't find the tool you are looking for?
-        <q-btn unelevated flat no-caps color="primary" label="Let us know" class="link-btn" />
+        <q-btn unelevated flat no-caps color="primary" label="Let us know" class="link-btn"
+          @click="$bus.emit('display-contact-modal')" />
       </div>
     </div>
 

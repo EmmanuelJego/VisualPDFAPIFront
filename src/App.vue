@@ -7,6 +7,7 @@ import { defineComponent } from 'vue';
 
 import plausibleEvents from 'src/resources/plausible-events.js';
 import vueWipModal from 'src/components/vue-wip-modal.vue';
+import vueContactModal from 'src/components/vue-contact-modal.vue';
 
 export default defineComponent({
   name: 'App',
@@ -18,6 +19,12 @@ export default defineComponent({
 
       this.$q.dialog({
         component: vueWipModal,
+      });
+    });
+
+    this.$bus.on('display-contact-modal', () => {
+      this.$q.dialog({
+        component: vueContactModal,
       });
     });
   },

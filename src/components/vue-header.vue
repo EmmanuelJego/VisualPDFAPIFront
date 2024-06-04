@@ -12,6 +12,13 @@
       <router-link to="/pricing" class="desktop-only-item">Pricing</router-link>
       <router-link to="/guides" class="desktop-only-item">Guides</router-link>
       <router-link to="/docs" class="desktop-only-item">API reference</router-link>
+      <q-btn unelevated no-caps flat color="dark" :ripple="false" class="desktop-only-item q-px-sm"
+        @click="$bus.emit('display-contact-modal')">
+        <span :class="icons.messages" class="text-body1" />
+        <q-tooltip :offset="[5, 5]">
+          Contact
+        </q-tooltip>
+      </q-btn>
 
       <div class="q-ml-auto">
         <q-btn unelevated no-caps flat color="dark" label="Login" :ripple="false" class="q-mr-sm desktop-only-item"
@@ -19,7 +26,6 @@
         <q-btn unelevated no-caps color="primary" label="Try for free" :ripple="false" class="desktop-only-item"
           @click="displayWIPModal('header try')" />
       </div>
-      <!-- <router-link class="q-ml-auto desktop-only-item" to="login">Login</router-link> -->
 
       <vue-menu-dropdown class="q-ml-auto mobile-only-item" mobile :id="'mobile-menu-dropdown'">
         <template v-slot:title>
@@ -32,6 +38,8 @@
             <router-link to="/guides" class="close-dropdown">Guides</router-link>
             <router-link to="/docs" class="close-dropdown">API reference</router-link>
             <router-link to="/pricing" class="close-dropdown">Pricing</router-link>
+            <q-btn unelevated no-caps align="left" flat color="dark" :ripple="false"
+              class="close-dropdown q-pa-none text-body1" @click="$bus.emit('display-contact-modal')" label="Contact" />
 
             <q-separator />
 

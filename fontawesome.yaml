@@ -47,3 +47,5 @@ icons:
       - solid
   - envelope:
       - regular
+  - messages:
+      - regular

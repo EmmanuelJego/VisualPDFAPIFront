@@ -28,7 +28,8 @@
 
   <div class="q-mt-md">
     <span>Can't find a font that suits your need?</span>
-    <q-btn unelevated flat no-caps color="primary" label="Contact us" class="link-btn" />
+    <q-btn unelevated flat no-caps color="primary" label="Contact us" class="link-btn"
+      @click="$bus.emit('display-contact-modal')" />
   </div>
 </template>
 

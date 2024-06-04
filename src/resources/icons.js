@@ -20,6 +20,7 @@ const regularIcons = {
   questionCircle: 'fa-circle-question',
   download: 'fa-download',
   mail: 'fa-envelope',
+  messages: 'fa-messages',
 };
 
 Object.keys(regularIcons).forEach((key) => {
